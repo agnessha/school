@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(./fonts/RibeyeMarrow-Regular.woff) format('woff');
+}
+
+body{
+  background-color: #f0d2a5;
+}
+
+
+.app-wrapper{
+  display: grid;
+  grid-template-areas:
+  "h h"
+  "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+
+  width: 1200px;
+  margin: 50px auto;
+}
+
+
+
+
+

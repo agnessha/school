@@ -1,0 +1,52 @@
+.content{
+  grid-area: c;
+  background-color: #d4ad72;
+  font-family: 'MyFont', sans-serif;
+
+  & img{
+    width: 1000px;
+  }
+}
+
+.ava {
+  width: 200px;
+  margin: 20px;
+  display: inline-block;
+  & img{
+    width: 200px;
+  }
+}
+.description{
+  display: inline-block;
+  top: 0;
+  vertical-align: top;
+  margin: 20px;
+}
+
+.profile_info{
+  vertical-align: top;
+}
+
+.myPosts{
+  padding: 30px;
+}
+.newPosts_input{
+  & input{
+    width: 800px;
+    height: 85px;
+    border-radius: 5px;
+    border-color: #a37f49;
+    background-color: #f0d2a5;
+  }
+}
+.newPost_btn{
+  height: 25px;
+  width: 70px;
+  background-color: #a37f49;
+  text-align: center;
+  margin: 20px 135px 20px auto;
+  &:hover{
+    background-color: #a68e6a;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,25 @@
+.myPosts {
+  padding: 30px;
+}
+
+.newPosts_input input {
+  width: 800px;
+  height: 85px;
+  border-radius: 5px;
+  border-color: #a37f49;
+  background-color: #f0d2a5;
+}
+
+.newPost_btn {
+  height: 25px;
+  width: 70px;
+  background-color: #a37f49;
+  text-align: center;
+  margin: 20px 135px 20px auto;
+}
+.newPost_btn:hover {
+  background-color: #a68e6a;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=MyPosts.module.css.map */

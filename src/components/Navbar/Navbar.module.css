@@ -1,0 +1,16 @@
+.nav {
+  grid-area: n;
+  background-color: #d4ad72;
+  border-radius: 15px;
+  text-align: center;
+  font-family: "MyFont", sans-serif;
+  line-height: 50px;
+  padding-top: 30px;
+  font-size: 25px;
+}
+
+.active {
+  color: #fff;
+}
+
+/*# sourceMappingURL=Navbar.module.css.map */
