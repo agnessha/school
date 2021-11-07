@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Profile.module.css';
 import profileImg from '../../img/Landscape-Color.jpg'
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
@@ -18,22 +19,7 @@ const Profile = () => {
 
                 </div>
                 </div>
-                <div className={s.myPosts}>
-                    <div className={s.newPosts}>
-                        <div className={s.newPosts_title}>
-                            New post
-                        </div>
-                        <div className={s.newPosts_input}>
-                            <input type="text"/>
-                        </div>
-                        <div className={s.newPost_btn}>
-                            Post
-                        </div>
-                    </div>
-                        <div className={s.post}>
-                            post
-                        </div>
-                </div>
+            <MyPosts />
             </div>
         </div>
     );

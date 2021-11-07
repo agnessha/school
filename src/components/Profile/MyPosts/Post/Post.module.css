@@ -1,0 +1,16 @@
+.post img {
+  width: 120px;
+  display: inline-block;
+}
+
+.post_text {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+}
+
+.like img {
+  width: 20px;
+}
+
+/*# sourceMappingURL=Post.module.css.map */
