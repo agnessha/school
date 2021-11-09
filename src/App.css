@@ -16,4 +16,10 @@ body {
   margin: 50px auto;
 }
 
+.app-wrapper-content {
+  grid-area: c;
+  background-color: #d4ad72;
+  font-family: "MyFont", sans-serif;
+}
+
 /*# sourceMappingURL=App.css.map */
