@@ -1,0 +1,28 @@
+.dialogs{
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialogs__items{
+  margin: 20px;
+  background-color: #f0d2a5;
+  border-radius: 20px;
+  text-align: center;
+  min-height: 400px;
+  width: 200px;
+}
+.dialog{
+  padding: 10px;
+  font-size: 25px;
+  display: inline-block;
+  width: 150px;
+  &:hover{
+    background-color: #a37f49;
+    border-radius: 20px;
+  }
+}
+
+.messages{
+  margin: 20px;
+
+}
