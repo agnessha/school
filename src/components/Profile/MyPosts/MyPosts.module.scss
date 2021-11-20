@@ -8,18 +8,21 @@
     width: 800px;
     height: 85px;
     border-radius: 5px;
-    border-color: #a37f49;
-    background-color: #f0d2a5;
+    border-color: #7d7d7d;
+    background-color: #7d7d7d;
   }
+}
+.newPosts_title{
+  padding: 15px 0;
 }
 .newPost_btn{
   height: 25px;
   width: 70px;
-  background-color: #a37f49;
+  background-color: #2e2e2e;
   text-align: center;
-  margin: 20px 135px 20px auto;
+  margin: 20px auto 20px 5px;
   &:hover{
-    background-color: #a68e6a;
+    background-color: #383838;
     cursor: pointer;
   }
 }

@@ -1,0 +1,10 @@
+.dialog{
+  padding: 10px;
+  font-size: 25px;
+  display: inline-block;
+  width: 150px;
+  &:hover{
+    background-color: #a37f49;
+    border-radius: 20px;
+  }
+}

@@ -1,31 +1,28 @@
 @font-face {
   font-family: 'MyFont';
-  src: local('MyFont'), url(./fonts/RibeyeMarrow-Regular.woff) format('woff');
+  src: local('MyFont'), url(./fonts/Rosario-Regular.woff) format('woff');
 }
 
 body{
-  background-color: #f0d2a5;
+  background-color: #696969;
 }
 
 
 .app-wrapper{
   display: grid;
   grid-template-areas:
-  "h h"
   "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  grid-template-columns: 1.8fr 7.8fr;
+  margin-left: 10%;
+  margin-right: 10%;
 
-  width: 1200px;
-  margin: 50px auto;
 }
 
 .app-wrapper-content{
   grid-area: c;
-  background-color: #d4ad72;
+  background-color: #1c1c1c;
   font-family: 'MyFont', sans-serif;
-  width: 1000px;
+  color: white;
 }
 
 

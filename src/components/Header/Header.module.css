@@ -1,12 +1,17 @@
 header img {
   width: 200px;
   margin: 10px;
+  color: white;
+  margin-left: 10%;
 }
 
 .header {
   grid-area: h;
-  background-color: #a37f49;
-  border-radius: 15px;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

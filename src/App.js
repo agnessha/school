@@ -7,24 +7,26 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {
     BrowserRouter as Router,
-    Route,
-    Routes
+    Route, Routes
 } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 
-const App = () => {
+const App = (props) => {
+
     return (
-        <Router>
+        <div>
+        <Header/>
             <div className='app-wrapper'>
-                <Header/>
+
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/" element={<Profile/>}/>
-                        <Route path='/dialogs' element={<Dialogs/>}/>
+
+                        <Route path='/' element={<Profile postData={props.postData}/>}/>
+                        <Route path='/dialogs' element={<Dialogs dialogData={props.dialogData} messagesData={props.messagesData}/>}/>
                         <Route path='/news' element={<News />}/>
                         <Route path='/music' element={<Music />}/>
                         <Route path='/settings' element={<Settings />}/>
@@ -34,9 +36,11 @@ const App = () => {
                 {/*<Profile />*/}
                 {/*</div>*/}
             </div>
-        </Router>
+        </div>
     )
 }
+
+
 
 
 export default App;

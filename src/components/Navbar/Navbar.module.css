@@ -1,12 +1,12 @@
 .nav {
   grid-area: n;
-  background-color: #d4ad72;
-  border-radius: 15px;
-  text-align: center;
+  background-color: #595959;
   font-family: "MyFont", sans-serif;
   line-height: 50px;
-  padding-top: 30px;
   font-size: 25px;
+  margin-top: 69px;
+  height: 350px;
+  width: 232px;
 }
 .nav a {
   text-decoration: none;
@@ -15,6 +15,23 @@
 
 .active {
   color: #fff;
+}
+
+.icon {
+  color: white;
+  height: 20px;
+  padding: 0 15px;
+}
+
+.navbarLink {
+  background-color: #595959;
+}
+.navbarLink a {
+  width: 230px !important;
+  height: 50px;
+}
+.navbarLink:hover {
+  background-color: #4f4f4f;
 }
 
 /*# sourceMappingURL=Navbar.module.css.map */

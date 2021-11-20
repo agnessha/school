@@ -1,6 +1,7 @@
 .dialogs{
   display: grid;
   grid-template-columns: 2fr 10fr;
+  margin-top: 70px;
 }
 
 .dialogs__items{
@@ -10,16 +11,6 @@
   text-align: center;
   min-height: 400px;
   width: 200px;
-}
-.dialog{
-  padding: 10px;
-  font-size: 25px;
-  display: inline-block;
-  width: 150px;
-  &:hover{
-    background-color: #a37f49;
-    border-radius: 20px;
-  }
 }
 
 .messages{
