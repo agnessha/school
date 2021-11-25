@@ -21,20 +21,16 @@ const App = (props) => {
         <Header/>
             <div className='app-wrapper'>
 
-                <Navbar/>
+                <Navbar friendsData={props.friendsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-
-                        <Route path='/' element={<Profile postData={props.postData}/>}/>
+                        <Route path='/' element={<Profile postData={props.postData} addPost={props.addPost}/>}/>
                         <Route path='/dialogs' element={<Dialogs dialogData={props.dialogData} messagesData={props.messagesData}/>}/>
                         <Route path='/news' element={<News />}/>
                         <Route path='/music' element={<Music />}/>
                         <Route path='/settings' element={<Settings />}/>
                     </Routes>
                 </div>
-                {/*<div className='app-wrapper-content'>*/}
-                {/*<Profile />*/}
-                {/*</div>*/}
             </div>
         </div>
     )

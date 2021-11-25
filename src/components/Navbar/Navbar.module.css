@@ -1,16 +1,16 @@
 .nav {
   grid-area: n;
-  background-color: #595959;
   font-family: "MyFont", sans-serif;
-  line-height: 50px;
-  font-size: 25px;
+  line-height: 35px;
+  font-size: 20px;
   margin-top: 69px;
-  height: 350px;
+  margin-right: 20px;
   width: 232px;
 }
 .nav a {
   text-decoration: none;
   color: black;
+  display: block;
 }
 
 .active {
@@ -23,15 +23,15 @@
   padding: 0 15px;
 }
 
-.navbarLink {
-  background-color: #595959;
-}
 .navbarLink a {
   width: 230px !important;
-  height: 50px;
+  height: 37px;
+  color: black !important;
 }
 .navbarLink:hover {
-  background-color: #4f4f4f;
+  background-color: #b3b3b3;
+  text-decoration: none;
+  color: black;
 }
 
 /*# sourceMappingURL=Navbar.module.css.map */

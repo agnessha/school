@@ -1,36 +1,6 @@
-.nav{
-  grid-area: n;
-  background-color: #595959;
-  font-family: 'MyFont', sans-serif;
-  line-height: 50px;
-  font-size: 25px;
-  margin-top: 69px;
-  height: 350px;
-  width: 232px;
-
-
-  & a{
-    text-decoration: none;
-    color: black;
-
-  }
+.friends {
 }
 
-.active{
-  color: #fff;
-}
-.icon{
-  color: white;
-  height: 20px;
-  padding: 0 15px;
-}
-.navbarLink{
-  background-color: #595959;
-  a {
-    width: 230px !important;
-    height: 50px;
-  }
-  &:hover{
-    background-color: #4f4f4f;
-  }
+.friends__title{
+  font: bold ;
 }

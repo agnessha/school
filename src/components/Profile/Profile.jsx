@@ -15,7 +15,7 @@ const Profile = (props) => {
             </div>
             <div>
                 <Profile__info mainMessage='Hello, react-app '/>
-                <MyPosts postData={props.postData}/>
+                <MyPosts postData={props.postData} addPost={props.addPost}/>
             </div>
         </div>
     );

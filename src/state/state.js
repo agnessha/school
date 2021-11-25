@@ -19,8 +19,24 @@ let state = {
             {id: 3, text: 'mem drevnosti'},
 
         ]
+    },
+    friends: {
+        friendsData: [
+            {id: 1, name: "Petja"},
+            {id: 2, name: "Katja"}
+        ]
     }
+}
 
+ export let addPost = (postText) => {
+    debugger;
+    let newPost = {
+        id: 5,
+        text: postText,
+        likeCount: 2
+    }
+    state.profilePage.postData.push(newPost);
+    debugger;
 }
 
 export default state;

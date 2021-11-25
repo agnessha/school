@@ -5,10 +5,13 @@ import {NavLink} from "react-router-dom";
 
 const Message__item = (props) => {
     return (
-        <div className={s.message}>
-            {props.message}
+        <div>
+            <div className={s.message}>
+                {props.message}
+            </div>
         </div>
     );
 }
 
 export default Message__item;
+

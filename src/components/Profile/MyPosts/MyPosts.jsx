@@ -8,6 +8,13 @@ const MyPosts = (props) => {
     let newPostData = props.postData.map( post => (
         <Post text={post.text} like={post.likeCount} />
     ) )
+    let newPost = React.createRef();
+
+    let createPost = () => {
+        debugger;
+        let text = newPost.current.value;
+        props.addPost(text)
+    }
     return (
         <div className={s.myPosts}>
             <div className={s.newPosts}>
@@ -15,11 +22,11 @@ const MyPosts = (props) => {
                     New post
                 </div>
                 <div className={s.newPosts_input}>
-                    <input type="text"/>
+                    <textarea ref={newPost}></textarea>
                 </div>
-                <div className={s.newPost_btn}>
+                <button onClick={createPost} className={s.newPost_btn}>
                     Post
-                </div>
+                </button>
             </div>
             <div className="Posts">
                 {newPostData}

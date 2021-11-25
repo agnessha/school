@@ -8,7 +8,8 @@ import {
     Route
 } from "react-router-dom";
 import state from "./state/state";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {addPost} from "./state/state";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,8 @@ ReactDOM.render(
         postData={state.profilePage.postData}
         dialogData={state.dialogPage.dialogData}
         messagesData={state.dialogPage.messagesData}
+        friendsData={state.friends.friendsData}
+        addPost={addPost}
     />
       </Router>
   </React.StrictMode>,

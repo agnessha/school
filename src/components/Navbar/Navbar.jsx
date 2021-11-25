@@ -5,11 +5,11 @@ import homePage from "../../img/home.png"
 import dialogImg from "../../img/dialog.png"
 import newsImg from "../../img/megaphone.png"
 import musicImg from "../../img/musical-note.png"
-
 import settingImg from "../../img/setting.png"
+import FriendsOnline from "./FriendsOnline/FriendsOnline";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.navbarLink}>
@@ -38,6 +38,9 @@ const Navbar = () => {
                     <img className={s.icon} src={settingImg} alt=""/>
                     Settings</NavLink>
             </div>
+
+            <FriendsOnline friendsData={props.friendsData}/>
+
         </nav>
     );
 }
