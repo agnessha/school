@@ -5,7 +5,11 @@ import {NavLink} from "react-router-dom";
 
 const Message__item = (props) => {
     return (
-        <div>
+        <div className={s.messageItem}>
+
+            <div className={s.avaMessage}>
+                <img src="https://klike.net/uploads/posts/2020-04/1587719791_1.jpg" alt=""/>
+            </div>
             <div className={s.message}>
                 {props.message}
             </div>

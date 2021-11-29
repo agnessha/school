@@ -16,7 +16,6 @@ const Navbar = (props) => {
                 <NavLink to='/' activeClassName={s.active}>
                     <img className={s.icon} src={homePage} alt=""/>
                     Profile</NavLink>
-                {console.log(s.nav)}
             </div>
             <div className={s.navbarLink}>
                 <NavLink to='/dialogs'>

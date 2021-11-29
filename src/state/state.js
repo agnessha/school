@@ -1,10 +1,15 @@
+let renderEntireTree = () => {
+
+}
+
+
 let state = {
     profilePage: {
         postData: [
             {id: 1, text: "Hello?", likeCount: 1},
             {id: 2, text: "You are very interesting person!", likeCount: 20}
         ],
-
+        textareaValue: ""
     },
     dialogPage: {
         dialogData: [
@@ -15,10 +20,9 @@ let state = {
         ],
         messagesData: [
             {id: 1, text: 'hello'},
-            {id: 2, text: 'kek cheburek'},
-            {id: 3, text: 'mem drevnosti'},
 
-        ]
+        ],
+        textareaMessageValue: ""
     },
     friends: {
         friendsData: [
@@ -28,15 +32,38 @@ let state = {
     }
 }
 
- export let addPost = (postText) => {
-    debugger;
+window.state = state;
+export let addMessage = () => {
+    let newMessage = {
+        id: 4,
+        text: state.dialogPage.textareaMessageValue,
+    }
+    state.dialogPage.messagesData.push(newMessage)
+    renderEntireTree(state)
+}
+export let addTextareaMessageValue = (value) => {
+    state.dialogPage.textareaMessageValue = value
+    renderEntireTree(state)
+}
+ export let addPost = () => {
     let newPost = {
         id: 5,
-        text: postText,
-        likeCount: 2
+        text: state.profilePage.textareaValue,
+        likeCount: 2,
+
     }
     state.profilePage.postData.push(newPost);
-    debugger;
+     state.profilePage.textareaValue = "";
+    renderEntireTree(state);
+}
+export let addTextareaValue = (value) => {
+    state.profilePage.textareaValue = value
+    renderEntireTree(state);
+
+}
+
+export let subscribe = (observer) => {
+    renderEntireTree = observer
 }
 
 export default state;

@@ -32,15 +32,17 @@
 }
 
 .messages{
-  margin: 20px 0 0 0;
+  overflow: auto;
+  height: 400px;
   background-color: #e5e5e5;
-  min-height: 400px;
   padding: 30px ;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ffffff;
 }
 
 .sendMessage{
   bottom: 0;
-  top: 63%;
+  margin: 0 0 10px 30px ;
   position: relative;
   vertical-align: bottom;
   & button{

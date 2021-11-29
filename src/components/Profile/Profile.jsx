@@ -7,6 +7,7 @@ import Profile__info from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
+
     return (
 
         <div className={s.content}>
@@ -15,7 +16,11 @@ const Profile = (props) => {
             </div>
             <div>
                 <Profile__info mainMessage='Hello, react-app '/>
-                <MyPosts postData={props.postData} addPost={props.addPost}/>
+                <MyPosts profilePage={props.profilePage}
+                         addTextareaValue={props.addTextareaValue}
+                         addPost={props.addPost}
+
+                />
             </div>
         </div>
     );

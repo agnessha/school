@@ -5,16 +5,23 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let newPostData = props.postData.map( post => (
+    let newPostData = props.profilePage.postData.map( post => (
         <Post text={post.text} like={post.likeCount} />
     ) )
     let newPost = React.createRef();
 
     let createPost = () => {
-        debugger;
-        let text = newPost.current.value;
-        props.addPost(text)
+
+        props.addPost()
     }
+
+    let teaxtareaNewValue = () => {
+
+        let text = newPost.current.value;
+        props.addTextareaValue(text)
+    }
+
+
     return (
         <div className={s.myPosts}>
             <div className={s.newPosts}>
@@ -22,7 +29,7 @@ const MyPosts = (props) => {
                     New post
                 </div>
                 <div className={s.newPosts_input}>
-                    <textarea ref={newPost}></textarea>
+                    <textarea onChange={teaxtareaNewValue} ref={newPost} value={props.profilePage.textareaValue}/>
                 </div>
                 <button onClick={createPost} className={s.newPost_btn}>
                     Post

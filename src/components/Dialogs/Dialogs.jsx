@@ -20,20 +20,28 @@ const Dialogs = (props) => {
     let messageTextLink = React.createRef();
 
     let sendMessage = () => {
-        let messageText = messageTextLink.current.value;
-        alert(messageText)
+        props.addMessage();
     }
+    let changeValue = () => {
+        let messageText = messageTextLink.current.value
+        props.addTextareaMessageValue(messageText)
+    }
+    console.log(props)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs__items}>
                 {newDialogData}
             </div>
+            <div>
             <div className={s.messages}>
                 {newMessagesData}
-                <div className={s.sendMessage}>
-                <textarea ref={messageTextLink}></textarea>
+            </div>
+            <div className={s.sendMessage}>
+                <textarea ref={messageTextLink}
+                          onChange={changeValue}
+                          value={props.textareaMessageValue} />
                 <button onClick={sendMessage}>Send</button>
-                </div>
+            </div>
             </div>
         </div>
     );

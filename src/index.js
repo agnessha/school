@@ -2,29 +2,41 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from "./App";
 import {
     BrowserRouter as Router,
     Route
 } from "react-router-dom";
-import state from "./state/state";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {addPost} from "./state/state";
+import {addTextareaValue} from "./state/state"
+import {addMessage} from "./state/state";
+import {addTextareaMessageValue} from "./state/state";
+import state, { subscribe} from "./state/state";
+import App from "./App";
 
-ReactDOM.render(
-  <React.StrictMode>
-      <Router>
-    <App
-        postData={state.profilePage.postData}
-        dialogData={state.dialogPage.dialogData}
-        messagesData={state.dialogPage.messagesData}
-        friendsData={state.friends.friendsData}
-        addPost={addPost}
-    />
-      </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export const renderEntireTree = (state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Router>
+                <App
+                    profilePage={state.profilePage}
+                    dialogData={state.dialogPage.dialogData}
+                    messagesData={state.dialogPage.messagesData}
+                    friendsData={state.friends.friendsData}
+                    addPost={addPost}
+                    addTextareaValue={addTextareaValue}
+                    addMessage={addMessage}
+                    textareaMessageValue={state.dialogPage.textareaMessageValue}
+                    addTextareaMessageValue={addTextareaMessageValue}
+                />
+            </Router>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+renderEntireTree(state);
+
+subscribe(renderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
