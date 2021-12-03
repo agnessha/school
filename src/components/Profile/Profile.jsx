@@ -17,8 +17,7 @@ const Profile = (props) => {
             <div>
                 <Profile__info mainMessage='Hello, react-app '/>
                 <MyPosts profilePage={props.profilePage}
-                         addTextareaValue={props.addTextareaValue}
-                         addPost={props.addPost}
+                         dispatch={props.dispatch}
 
                 />
             </div>

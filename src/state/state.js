@@ -33,40 +33,39 @@ export let store = {
     getState() {
         return this._state;
     },
-    addMessage() {
-        let newMessage = {
-            id: 4,
-            text: this._state.dialogPage.textareaMessageValue,
-        }
-        this._state.dialogPage.messagesData.push(newMessage)
-        this._state.dialogPage.textareaMessageValue = "";
-        this.renderEntireTree(this._state)
+    subscribe(observer) {
+        this.renderEntireTree = observer
     },
     renderEntireTree() {
         console.log('State changed')
     },
-    addTextareaMessageValue(value) {
-        this._state.dialogPage.textareaMessageValue = value
-        this.renderEntireTree(this._state)
-    },
-    addPost() {
-        let newPost = {
-            id: 5,
-            text: this._state.profilePage.textareaValue,
-            likeCount: 2,
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                text: this._state.profilePage.textareaValue,
+                likeCount: 2,
 
+            }
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.textareaValue = "";
+            console.log(this._state.profilePage.textareaValue)
+            this.renderEntireTree(this._state);
+        } else if (action.type === 'ADD-POST-VALUE') {
+            this._state.profilePage.textareaValue = action.value
+            this.renderEntireTree(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 4,
+                text: this._state.dialogPage.textareaMessageValue,
+            }
+            this._state.dialogPage.messagesData.push(newMessage)
+            this._state.dialogPage.textareaMessageValue = "";
+            this.renderEntireTree(this._state)
+        } else if (action.type === 'ADD-MESSAGE-VALUE') {
+            this._state.dialogPage.textareaMessageValue = action.value
+            this.renderEntireTree(this._state)
         }
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.textareaValue = "";
-        console.log(this._state.profilePage.textareaValue)
-        this.renderEntireTree(this._state);
-    },
-    addTextareaValue(value) {
-        this._state.profilePage.textareaValue = value
-        this.renderEntireTree(this._state);
-    },
-    subscribe(observer) {
-        this.renderEntireTree = observer
     }
 }
 

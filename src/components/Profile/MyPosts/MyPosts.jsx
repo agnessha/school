@@ -12,12 +12,17 @@ const MyPosts = (props) => {
     let newPost = React.createRef();
 
     let createPost = () => {
-        props.addPost();
+        props.dispatch({
+            type: 'ADD-POST'
+        });
     }
 
     let teaxtareaNewValue = () => {
         let text = newPost.current.value;
-        props.addTextareaValue(text)
+        props.dispatch({
+            type: 'ADD-POST-VALUE',
+            value: text
+        })
         console.log(props.profilePage.textareaValue)
     }
 

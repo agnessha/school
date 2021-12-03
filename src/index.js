@@ -22,15 +22,13 @@ export const renderEntireTree = (state) => {
         <React.StrictMode>
             <Router>
                 <App
+
                     profilePage={state.profilePage}
                     dialogData={state.dialogPage.dialogData}
                     messagesData={state.dialogPage.messagesData}
                     friendsData={state.friends.friendsData}
-                    addPost={store.addPost.bind(store)}
-                    addTextareaValue={store.addTextareaValue.bind(store)}
-                    addMessage={store.addMessage.bind(store)}
+                    dispatch={store.dispatch.bind(store)}
                     textareaMessageValue={state.dialogPage.textareaMessageValue}
-                    addTextareaMessageValue={store.addTextareaMessageValue.bind(store)}
                 />
             </Router>
         </React.StrictMode>,

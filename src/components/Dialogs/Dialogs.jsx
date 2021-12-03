@@ -20,11 +20,16 @@ const Dialogs = (props) => {
     let messageTextLink = React.createRef();
 
     let sendMessage = () => {
-        props.addMessage();
+        props.dispatch({
+            type: 'ADD-MESSAGE'
+        });
     }
     let changeValue = () => {
         let messageText = messageTextLink.current.value
-        props.addTextareaMessageValue(messageText)
+        props.dispatch({
+            type: 'ADD-MESSAGE-VALUE',
+            value: messageText
+        })
     }
     console.log(props)
     return (
