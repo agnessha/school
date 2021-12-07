@@ -1,5 +1,19 @@
 
-const dialogReducer = (state, action) => {
+let defaultState = {
+    dialogData: [
+        {id: 1, name: 'Vasja'},
+        {id: 2, name: 'Masha'},
+        {id: 3, name: 'Egor'},
+        {id: 4, name: 'Vasja'},
+    ],
+    messagesData: [
+        {id: 1, text: 'hello'},
+
+    ],
+    textareaMessageValue: ""
+}
+
+const dialogReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             let newMessage = {

@@ -7,12 +7,12 @@ import {
     Route
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import {addPost} from "./state/state";
-// import {addTextareaValue} from "./state/state"
-// import {addMessage} from "./state/state";
-// import {addTextareaMessageValue} from "./state/state";
-// import state, { subscribe} from "./state/state";
-import {store} from "./state/store";
+// import {addPost} from "./redux/redux";
+// import {addTextareaValue} from "./redux/redux"
+// import {addMessage} from "./redux/redux";
+// import {addTextareaMessageValue} from "./redux/redux";
+// import redux, { subscribe} from "./redux/redux";
+import store from "./redux/redux-store";
 import App from "./App";
 
 
@@ -38,7 +38,10 @@ export const renderEntireTree = (state) => {
 }
 renderEntireTree(store.getState());
 
-store.subscribe(renderEntireTree)
+store.subscribe(() => {
+    let state = store.getState()
+    renderEntireTree(state)
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

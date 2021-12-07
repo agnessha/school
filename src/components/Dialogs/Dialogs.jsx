@@ -5,7 +5,7 @@ import Message__item from "./Message/Message";
 import Dialog__item from "./Dialog/Dialog";
 import Button from 'react-bootstrap/Button';
 import {Col} from "react-bootstrap";
-import {addMessageAction, addMessageValueAction} from "../../state/dialogReducer";
+import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer";
 
 
 const Dialogs = (props) => {

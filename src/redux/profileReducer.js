@@ -1,6 +1,13 @@
 
+let defaultState = {
+    postData: [
+        {id: 1, text: "Hello?", likeCount: 1},
+        {id: 2, text: "You are very interesting person!", likeCount: 20}
+    ],
+    textareaValue: ""
+}
 
-const profileReducer = (state, action) => {
+const profileReducer = (state = defaultState, action) => {
 
     switch (action.type){
         case 'ADD-POST':
