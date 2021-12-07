@@ -1,0 +1,30 @@
+.message {
+  color: black;
+  display: inline-block;
+}
+
+.avaMessage {
+  display: inline-block;
+}
+.avaMessage img {
+  float: left;
+  max-width: 40px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.messageItem {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.messageItem::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*# sourceMappingURL=Message.module.css.map */

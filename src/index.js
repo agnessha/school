@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import {addMessage} from "./state/state";
 // import {addTextareaMessageValue} from "./state/state";
 // import state, { subscribe} from "./state/state";
-import {store} from "./state/state";
+import {store} from "./state/store";
 import App from "./App";
 
 

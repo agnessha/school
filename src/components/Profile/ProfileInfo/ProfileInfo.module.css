@@ -1,0 +1,22 @@
+.ava {
+  width: 200px;
+  margin: 20px;
+  display: inline-block;
+}
+.ava img {
+  width: 200px;
+}
+
+.description {
+  display: inline-block;
+  top: 0;
+  vertical-align: top;
+  margin: 20px;
+}
+
+.profile_info {
+  vertical-align: top;
+  background-color: #b3b3b3;
+}
+
+/*# sourceMappingURL=ProfileInfo.module.css.map */
