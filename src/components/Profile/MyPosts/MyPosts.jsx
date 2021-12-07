@@ -1,6 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {AddPostAction, AddPostValueAction} from "../../../state/profileReducer";
 
 
 const MyPosts = (props) => {
@@ -12,18 +13,14 @@ const MyPosts = (props) => {
     let newPost = React.createRef();
 
     let createPost = () => {
-        props.dispatch({
-            type: 'ADD-POST'
-        });
+        let action = AddPostAction();
+        props.dispatch(action)
     }
 
     let teaxtareaNewValue = () => {
         let text = newPost.current.value;
-        props.dispatch({
-            type: 'ADD-POST-VALUE',
-            value: text
-        })
-        console.log(props.profilePage.textareaValue)
+        let action = AddPostValueAction(text)
+        props.dispatch(action)
     }
 
 

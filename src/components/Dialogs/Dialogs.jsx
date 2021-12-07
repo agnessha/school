@@ -5,6 +5,7 @@ import Message__item from "./Message/Message";
 import Dialog__item from "./Dialog/Dialog";
 import Button from 'react-bootstrap/Button';
 import {Col} from "react-bootstrap";
+import {addMessageAction, addMessageValueAction} from "../../state/dialogReducer";
 
 
 const Dialogs = (props) => {
@@ -20,21 +21,18 @@ const Dialogs = (props) => {
     let messageTextLink = React.createRef();
 
     let sendMessage = () => {
-        props.dispatch({
-            type: 'ADD-MESSAGE'
-        });
+        let action = addMessageAction()
+        props.dispatch(action)
     }
     let changeValue = () => {
         let messageText = messageTextLink.current.value
-        props.dispatch({
-            type: 'ADD-MESSAGE-VALUE',
-            value: messageText
-        })
+        let action = addMessageValueAction(messageText)
+        props.dispatch(action)
     }
     console.log(props)
     return (
         <div className={s.dialogs}>
-            <div className={s.dialogs__items}>
+            <div className={s.dialogs__items  }>
                 {newDialogData}
             </div>
             <div>
