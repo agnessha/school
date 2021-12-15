@@ -12,6 +12,7 @@ import {
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 const App = (props) => {
@@ -24,13 +25,13 @@ const App = (props) => {
                 <Navbar friendsData={props.friendsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/' element={<Profile profilePage={props.profilePage}
-                                                          dispatch={props.dispatch}
+                        <Route path='/' element={<Profile store={props.store}
                         />}/>
-                        <Route path='/dialogs' element={<Dialogs dialogData={props.dialogData}
-                                                                 messagesData={props.messagesData}
-                                                                 textareaMessageValue={props.textareaMessageValue}
-                                                                 dispatch={props.dispatch}
+                        <Route path='/dialogs' element={<DialogsContainer store={props.store}
+                            // dialogData={props.dialogData}
+                            //                                      messagesData={props.messagesData}
+                            //                                      textareaMessageValue={props.textareaMessageValue}
+                            //                                      dispatch={props.dispatch}
                         />}/>
                         <Route path='/news' element={<News />}/>
                         <Route path='/music' element={<Music />}/>

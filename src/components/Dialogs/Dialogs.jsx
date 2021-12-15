@@ -11,39 +11,28 @@ import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer
 const Dialogs = (props) => {
 
 
-    let newMessagesData = props.messagesData.map(message => (
-        <Message__item message={message.text}/>
-    ))
-
-    let newDialogData = props.dialogData.map(dialog => (
-        <Dialog__item name={dialog.name} id={dialog.id}/>
-    ));
     let messageTextLink = React.createRef();
 
-    let sendMessage = () => {
-        let action = addMessageAction()
-        props.dispatch(action)
-    }
+
     let changeValue = () => {
-        let messageText = messageTextLink.current.value
-        let action = addMessageValueAction(messageText)
-        props.dispatch(action)
+        let text = messageTextLink.current.value
+        props.changeValue(text)
     }
     console.log(props)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs__items  }>
-                {newDialogData}
+                {props.newDialogData}
             </div>
             <div>
             <div className={s.messages}>
-                {newMessagesData}
+                {props.newMessagesData}
             </div>
             <div className={s.sendMessage}>
                 <textarea ref={messageTextLink}
                           onChange={changeValue}
-                          value={props.textareaMessageValue} />
-                <button onClick={sendMessage}>Send</button>
+                          value={props.value} />
+                <button onClick={props.sendMessage}>Send</button>
             </div>
             </div>
         </div>

@@ -7,20 +7,11 @@ import {AddPostAction, AddPostValueAction} from "../../../redux/profileReducer";
 const MyPosts = (props) => {
 
 
-    let newPostData = props.profilePage.postData.map( post => (
-        <Post text={post.text} like={post.likeCount} />
-    ) )
+
     let newPost = React.createRef();
-
-    let createPost = () => {
-        let action = AddPostAction();
-        props.dispatch(action)
-    }
-
-    let teaxtareaNewValue = () => {
-        let text = newPost.current.value;
-        let action = AddPostValueAction(text)
-        props.dispatch(action)
+    let newValue = () => {
+        let text = newPost.current.value
+        props.textAreaNewValue(text)
     }
 
 
@@ -31,16 +22,16 @@ const MyPosts = (props) => {
                     New post
                 </div>
                 <div className={s.newPosts_input}>
-                    <textarea onChange={teaxtareaNewValue}
+                    <textarea onChange={newValue}
                               ref={newPost}
-                              value={props.profilePage.textareaValue}/>
+                              value={props.value}/>
                 </div>
-                <button onClick={createPost} className={s.newPost_btn}>
+                <button onClick={props.createPost} className={s.newPost_btn}>
                     Post
                 </button>
             </div>
             <div className="Posts">
-                {newPostData}
+                {props.newPostData}
             </div>
         </div>
 

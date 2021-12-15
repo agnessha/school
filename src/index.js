@@ -17,12 +17,14 @@ import App from "./App";
 
 
 export const renderEntireTree = (state) => {
+    console.log(store.getState())
 
     ReactDOM.render(
         <React.StrictMode>
             <Router>
                 <App
-
+                    getState={store.getState.bind(store)}
+                    store={store}
                     profilePage={state.profilePage}
                     dialogData={state.dialogPage.dialogData}
                     messagesData={state.dialogPage.messagesData}

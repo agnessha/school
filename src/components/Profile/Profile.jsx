@@ -3,11 +3,12 @@ import s from './Profile.module.css';
 import profileImg from '../../img/Landscape-Color.jpg'
 import MyPosts from "./MyPosts/MyPosts";
 import Profile__info from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+
 
 
 
 const Profile = (props) => {
-
     return (
 
         <div className={s.content}>
@@ -16,8 +17,7 @@ const Profile = (props) => {
             </div>
             <div>
                 <Profile__info mainMessage='Hello, react-app '/>
-                <MyPosts profilePage={props.profilePage}
-                         dispatch={props.dispatch}
+                <MyPostsContainer store={props.store}
 
                 />
             </div>
