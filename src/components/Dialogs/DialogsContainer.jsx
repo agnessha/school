@@ -7,39 +7,54 @@ import Button from 'react-bootstrap/Button';
 import {Col} from "react-bootstrap";
 import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer";
 import Dialogs from "./Dialogs";
+import {connect} from "react-redux";
 
+//
+// const DialogsContainer = (props) => {
+//
+//
+//
+//
+//     let sendMessageAction = () => {
+//         let action = addMessageAction()
+//         props.store.dispatch(action)
+//     }
+//     let changeValueAction = (text) => {
+//         let action = addMessageValueAction(text)
+//         props.store.dispatch(action)
+//     }
+//     let value = props.store.getState().dialogPage.textareaMessageValue
+//     console.log(props)
+//     return (
+//         <Dialogs
+//             sendMessage={sendMessageAction}
+//             changeValue={changeValueAction}
+//             value={value}
+//         />
+//     );
+// }
 
-const DialogsContainer = (props) => {
+let mapStateToProps = (state) => {
 
-
-    let newMessagesData = props.store.getState().dialogPage.messagesData.map(message => (
-        <Message__item message={message.text}/>
-    ))
-
-    let newDialogData = props.store.getState().dialogPage.dialogData.map(dialog => (
-        <Dialog__item name={dialog.name} id={dialog.id}/>
-    ));
-
-    let sendMessageAction = () => {
-        let action = addMessageAction()
-        props.store.dispatch(action)
+    return {
+        dialogPage: state.dialogPage,
+                textareaMessageValue: state.textareaMessageValue
     }
-    let changeValueAction = (text) => {
-        let action = addMessageValueAction(text)
-        props.store.dispatch(action)
-    }
-    let value = props.store.getState().dialogPage.textareaMessageValue
-    console.log(props)
-    return (
-        <Dialogs
-            newMessagesData={newMessagesData}
-            newDialogData={newDialogData}
-            sendMessage={sendMessageAction}
-            changeValue={changeValueAction}
-            value={value}
-        />
-    );
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(addMessageAction())
+        },
+        changeValue: (text) => {
+            let action = addMessageValueAction(text)
+            dispatch(action)
+        }
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 
 

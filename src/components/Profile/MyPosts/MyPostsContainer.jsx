@@ -3,33 +3,60 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {AddPostAction, AddPostValueAction} from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
+import {connect} from "react-redux";
 
 
-const MyPostsContainer = (props) => {
 
 
-    let textAreaNewValue = (text) => {
-        let action = AddPostValueAction(text)
-        props.store.dispatch(action)
+
+const mapStateToProps = (state) => {
+    return {
+        profilePage: state.profilePage,
+        postData: state.profilePage.postData
     }
-    let createPost = () => {
-        let action = AddPostAction();
-        props.store.dispatch(action)
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        textAreaNewValue: (text) => {
+            let action = AddPostValueAction(text)
+            dispatch(action)
+
+        },
+        createPost: () => {
+
+            dispatch(AddPostAction())
+
+        }
     }
-    let newPostData = props.store.getState().profilePage.postData.map( post => (
-        <Post text={post.text} like={post.likeCount} />
-    ) )
-    let value = props.store.getState().profilePage.textareaValue
-
-    return (
-        <MyPosts
-        textAreaNewValue={textAreaNewValue}
-        createPost={createPost}
-        newPostData={newPostData}
-        value={value}
-        />
-
-    );
 }
 
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+
 export default MyPostsContainer;
+
+// const MyPostsContainer = (props) => {
+//
+//
+//     let textAreaNewValue = (text) => {
+//         let action = AddPostValueAction(text)
+//         store.dispatch(action)
+//     }
+//     let createPost = () => {
+//         let action = AddPostAction();
+//         store.dispatch(action)
+//     }
+//
+//     let profilePage = props.store.getState().profilePage
+//     let value = props.store.getState().profilePage.textareaValue
+//
+//     return (
+//         <MyPosts
+//         textAreaNewValue={textAreaNewValue}
+//         createPost={createPost}
+//         profilePage={profilePage}
+//
+//         />
+//
+//     );
+// }

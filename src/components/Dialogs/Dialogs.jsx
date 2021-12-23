@@ -13,6 +13,14 @@ const Dialogs = (props) => {
 
     let messageTextLink = React.createRef();
 
+    let newMessagesData = props.dialogPage.messagesData.map(message => (
+        <Message__item message={message.text}/>
+    ))
+
+
+    let newDialogData = props.dialogPage.dialogData.map(dialog => (
+        <Dialog__item name={dialog.name} id={dialog.id}/>
+    ));
 
     let changeValue = () => {
         let text = messageTextLink.current.value
@@ -22,16 +30,16 @@ const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs__items  }>
-                {props.newDialogData}
+                {newDialogData}
             </div>
             <div>
             <div className={s.messages}>
-                {props.newMessagesData}
+                {newMessagesData}
             </div>
             <div className={s.sendMessage}>
                 <textarea ref={messageTextLink}
                           onChange={changeValue}
-                          value={props.value} />
+                          value={props.dialogPage.textareaMessageValue} />
                 <button onClick={props.sendMessage}>Send</button>
             </div>
             </div>

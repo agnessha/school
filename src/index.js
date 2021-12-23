@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import redux, { subscribe} from "./redux/redux";
 import store from "./redux/redux-store";
 import App from "./App";
+import {Provider} from "react-redux";
 
 
 export const renderEntireTree = (state) => {
@@ -22,6 +23,7 @@ export const renderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <Router>
+                <Provider store={store}>
                 <App
                     getState={store.getState.bind(store)}
                     store={store}
@@ -32,6 +34,7 @@ export const renderEntireTree = (state) => {
                     dispatch={store.dispatch.bind(store)}
                     textareaMessageValue={state.dialogPage.textareaMessageValue}
                 />
+                </Provider>
             </Router>
         </React.StrictMode>,
         document.getElementById('root')
