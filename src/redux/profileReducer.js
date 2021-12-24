@@ -11,22 +11,17 @@ const profileReducer = (state = defaultState, action) => {
 
     switch (action.type){
         case 'ADD-POST': {
-            let newPost = {
-                id: 5,
-                text: state.textareaValue,
-                likeCount: 2,
-
-            }
-            let copyState = {...state}
-            copyState.postData = [...state.postData]
-            copyState.postData.push(newPost);
-            copyState.textareaValue = "";
-            return copyState;
+            return {
+                ...state,
+                postData: [...state.postData, {id: 5, text: state.textareaValue, likeCount: 2}],
+                textareaValue: ''
+            };
         }
         case 'ADD-POST-VALUE': {
-            let copyState = {...state}
-            copyState.textareaValue = action.value
-            return copyState;
+            return {
+                ...state,
+                textareaValue: action.value
+            };
         }
         default:
             return state;

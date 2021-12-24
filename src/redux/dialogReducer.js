@@ -16,21 +16,17 @@ let defaultState = {
 const dialogReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD-MESSAGE': {
-            let newMessage = {
-                id: 4,
-                text: state.textareaMessageValue,
+            return {
+                ...state,
+                messagesData: [...state.messagesData, {id: 4, text: state.textareaMessageValue}],
+                textareaMessageValue: ''
             }
-            let copyState = {...state}
-            copyState.dialogData = [...state.dialogData]
-            copyState.messagesData = [...state.messagesData]
-            copyState.messagesData.push(newMessage)
-            copyState.textareaMessageValue = "";
-            return copyState;
     }
         case 'ADD-MESSAGE-VALUE': {
-            let copyState = {...state}
-            copyState.textareaMessageValue = action.value
-            return copyState;
+            return {
+                ...state,
+                textareaMessageValue: action.value
+            };
         }
         default:
             return state;

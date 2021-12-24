@@ -9,33 +9,7 @@ import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
-//
-// const DialogsContainer = (props) => {
-//
-//
-//
-//
-//     let sendMessageAction = () => {
-//         let action = addMessageAction()
-//         props.store.dispatch(action)
-//     }
-//     let changeValueAction = (text) => {
-//         let action = addMessageValueAction(text)
-//         props.store.dispatch(action)
-//     }
-//     let value = props.store.getState().dialogPage.textareaMessageValue
-//     console.log(props)
-//     return (
-//         <Dialogs
-//             sendMessage={sendMessageAction}
-//             changeValue={changeValueAction}
-//             value={value}
-//         />
-//     );
-// }
-
 let mapStateToProps = (state) => {
-
     return {
         dialogPage: state.dialogPage,
                 textareaMessageValue: state.textareaMessageValue

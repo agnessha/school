@@ -6,7 +6,7 @@ import dialogImg from "../../img/dialog.png"
 import newsImg from "../../img/megaphone.png"
 import musicImg from "../../img/musical-note.png"
 import settingImg from "../../img/setting.png"
-import FriendsOnline from "./FriendsOnline/FriendsOnline";
+
 
 
 const Navbar = (props) => {
@@ -33,12 +33,17 @@ const Navbar = (props) => {
                     Music</NavLink>
             </div>
             <div className={s.navbarLink}>
+                <NavLink to='/users' >
+                    <img className={s.icon} src={musicImg} alt=""/>
+                    Users</NavLink>
+            </div>
+            <div className={s.navbarLink}>
                 <NavLink to='/settings'>
                     <img className={s.icon} src={settingImg} alt=""/>
                     Settings</NavLink>
             </div>
 
-            <FriendsOnline friendsData={props.friendsData}/>
+
 
         </nav>
     );

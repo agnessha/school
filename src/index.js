@@ -30,7 +30,6 @@ export const renderEntireTree = (state) => {
                     profilePage={state.profilePage}
                     dialogData={state.dialogPage.dialogData}
                     messagesData={state.dialogPage.messagesData}
-                    friendsData={state.friends.friendsData}
                     dispatch={store.dispatch.bind(store)}
                     textareaMessageValue={state.dialogPage.textareaMessageValue}
                 />
