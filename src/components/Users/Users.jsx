@@ -10,6 +10,7 @@ const Users = (props) => {
                   name={u.name}
                   town={u.location.town}
                   country={u.location.country}
+                  text={u.text}
 
         />
     )

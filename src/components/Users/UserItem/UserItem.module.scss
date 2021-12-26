@@ -2,5 +2,50 @@
 
 
 .user{
-  margin-top: 70px;
+
+  border: #878787 1px solid;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 20px 0;
+  &_ava img{
+    width: 150px;
+  }
+  &_status button{
+    border-radius: 5px;
+    border: 1px #878787  solid  ;
+    margin: 10px 0;
+    &:hover{
+      background-color: #b3b3b3;
+    }
+  }
+  &_left{
+    display: inline-block;
+  }
+  &_info{
+    float: right;
+    display: grid;
+    width: 70%;
+    grid-template-areas:
+    "n c";
+    grid-template-columns: 81% 20%;
+    color: #2e2e2e;
+    font-size: 18px;
+  }
+  &_name{
+    margin-bottom: 20px;
+  }
+  &_text{
+  }
+  //&_location{
+  //  display: inline-block;
+  //}
+  //&_right_info{
+  //  display: inline-block;
+  //}
+  &_right_info {
+    grid-area: n;
+  }
+  &_location{
+    grid-area: c;
+  }
 }

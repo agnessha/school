@@ -1,7 +1,8 @@
 
 let defaultState = {
     users: [
-        {id:1, name: "Ton Lory", status: true,  text: 'Hello', location: {town: 'Riga', country: 'Latvia'} }
+        {id:1, name: "Ton Lory", status: true,  text: 'Hello', location: {town: 'Riga', country: 'Latvia'}},
+        {id:2, name: "John Gred", status: false,  text: 'lolololololololo', location: {town: 'Riga', country: 'Latvia'}}
     ]
 }
 
