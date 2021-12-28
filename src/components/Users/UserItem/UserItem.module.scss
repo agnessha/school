@@ -7,15 +7,23 @@
   border-radius: 30px;
   padding: 20px;
   margin: 20px 0;
+  background-color: #f0f0f0;
   &_ava img{
     width: 150px;
   }
   &_status button{
-    border-radius: 5px;
-    border: 1px #878787  solid  ;
+    height: 37px;
+    width: 100px;
+    background-color: #267de0;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px #267de0 solid;
+    display: inline-block;
     margin: 10px 0;
     &:hover{
-      background-color: #b3b3b3;
+      background-color: #3f4fe0;
+      cursor: pointer;
+
     }
   }
   &_left{

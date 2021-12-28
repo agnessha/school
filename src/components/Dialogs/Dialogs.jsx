@@ -32,7 +32,7 @@ const Dialogs = (props) => {
             <div className={s.dialogs__items  }>
                 {newDialogData}
             </div>
-            <div>
+            <div className={s.dialogs_right}>
             <div className={s.messages}>
                 {newMessagesData}
             </div>

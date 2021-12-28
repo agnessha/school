@@ -9,9 +9,12 @@ header {
 }
 .header{
   grid-area: h;
-  background-color: #333;
+  background-color: #f0f0f0;
   position: fixed;
   top: 0;
   width: 100%;
  z-index: 9999;
+  padding: 15px 0 10px 20%;
+  height: 65px;
+  font-size: 20px;
 }

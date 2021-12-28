@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
+import {followAction, unfollowAction} from "../../redux/usersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -18,6 +19,13 @@ let mapDispatchToProps = (dispatch) => {
                 return value = 'FOLLOW'
             } else {
                 return value = 'UNFOLLOW'
+            }
+        },
+        changeStatusAction: (value, userId) => {
+            if (value === 'UNFOLLOW') {
+                dispatch(followAction(userId))
+            } else {
+                dispatch(unfollowAction(userId))
             }
         }
     }

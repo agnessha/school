@@ -1,6 +1,8 @@
 .myPosts {
   padding: 30px;
-  background-color: #b3b3b3;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  margin-top: 25px;
 }
 
 .newPosts_input input {
@@ -16,15 +18,18 @@
 }
 
 .newPost_btn {
-  height: 25px;
-  width: 70px;
-  background-color: #2e2e2e;
+  height: 37px;
+  width: 95px;
+  background-color: #267de0;
   text-align: center;
   margin: 20px auto 20px 5px;
+  border-radius: 6px;
+  border: 1px #267de0 solid;
 }
 .newPost_btn:hover {
-  background-color: #383838;
+  background-color: #3f4fe0;
   cursor: pointer;
+  border: 5px solid #3f4fe0;
 }
 
 /*# sourceMappingURL=MyPosts.module.css.map */

@@ -1,13 +1,16 @@
 .nav{
   grid-area: n;
-  font-family: 'MyFont', sans-serif;
+  font-family: 'MainFont', sans-serif;
   line-height: 35px;
   font-size: 20px;
-  margin-top: 69px;
+  margin-top: 100px;
   margin-right: 20px;
   width: 232px;
-
-
+  background-color: #f0f0f0;
+  border: 1px #f0f0f0 solid;
+  border-radius: 30px;
+  height: 300px;
+  padding: 15px;
   & a{
     text-decoration: none;
     color: black;
@@ -30,8 +33,9 @@
     color: black !important;
   }
   &:hover{
-    background-color: #b3b3b3;
+    background-color: #267de0;
     text-decoration: none;
     color: black;
+    border-radius: 20px;
   }
 }

@@ -6,29 +6,26 @@
 }
 
 .dialogs__items {
-  background-color: #e5e5e5;
+  background-color: #f0f0f0;
   min-height: 400px;
   width: 100%;
-  border-left: 1px solid #878787;
-  border-right: 1px solid #878787;
-  border-top: 1px solid #878787;
-  border-bottom: 1px solid #878787;
+  border-radius: 30px;
+  padding: 20px 0;
 }
 .dialogs__items a {
   text-decoration: none;
   color: black;
-  border-bottom: 1px solid #2e2e2e;
 }
 .dialogs__items a:hover {
-  background-color: #b3b3b3;
   text-decoration: none;
   color: black;
+  background-color: #267de0;
+  border-radius: 20px;
 }
 
 .messages {
   overflow: auto;
   height: 400px;
-  background-color: #e5e5e5;
   padding: 30px;
   margin-bottom: 30px;
   border-bottom: 1px solid #ffffff;
@@ -41,15 +38,32 @@
   vertical-align: bottom;
 }
 .sendMessage button {
-  margin: 5px 0 5px 10px;
-  border-radius: 3px;
-  position: absolute;
+  height: 37px;
+  width: 95px;
+  background-color: #267de0;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px #267de0 solid;
+  display: inline-block;
+  margin-left: 25px;
+}
+.sendMessage button:hover {
+  background-color: #3f4fe0;
+  cursor: pointer;
+  border: 5px solid #3f4fe0;
 }
 
 textarea {
   width: 75%;
   margin: 0 auto;
   height: 40px;
+  display: inline-block;
+}
+
+.dialogs_right {
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  margin-left: 30px;
 }
 
 /*# sourceMappingURL=Dialogs.module.css.map */

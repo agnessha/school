@@ -15,8 +15,13 @@
 }
 
 .profile_info {
+  font-family: "MyFont", sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+  color: #3d3d3d;
   vertical-align: top;
-  background-color: #b3b3b3;
+  background-color: #f0f0f0;
+  border-radius: 30px;
 }
 
 /*# sourceMappingURL=ProfileInfo.module.css.map */

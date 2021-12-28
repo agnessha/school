@@ -4,6 +4,13 @@ import avatarImg from '../../../img/avatar.svg'
 
 const UserItem = (props) => {
 
+    const changeStatus = () => {
+        debugger
+
+        let value = props.status
+        let userId = props.id
+        props.changeStatus(value,userId)
+    }
 
     return (
         <div className={s.user}>
@@ -12,7 +19,7 @@ const UserItem = (props) => {
                     <img src={avatarImg} alt=""/>
                 </div>
                 <div className={s.user_status}>
-                    <button>
+                    <button onClick={changeStatus}>
                         {props.status}
                     </button>
                 </div>

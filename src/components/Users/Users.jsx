@@ -4,6 +4,10 @@ import UserItem from "./UserItem/UserItem";
 
 const Users = (props) => {
 
+    let changeStatus = (value, userId) => {
+        props.changeStatusAction(value, userId)
+    }
+
     let newUsersData = props.usersPage.users.map(u =>
 
         <UserItem status={props.checkStatus(u.status)}
@@ -11,6 +15,8 @@ const Users = (props) => {
                   town={u.location.town}
                   country={u.location.country}
                   text={u.text}
+                  id={u.id}
+                  changeStatus={changeStatus}
 
         />
     )

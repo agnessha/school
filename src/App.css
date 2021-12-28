@@ -2,8 +2,12 @@
   font-family: "MyFont";
   src: local("MyFont"), url(./fonts/Rosario-Regular.woff) format("woff");
 }
+@font-face {
+  font-family: "MainFont";
+  src: local("MainFont"), url(./fonts/MavenPro-Regular.woff) format("woff");
+}
 body {
-  background-color: #d4d4d4 !important;
+  background-color: #e3e3e3 !important;
 }
 
 .app-wrapper {
@@ -16,8 +20,8 @@ body {
 
 .app-wrapper-content {
   grid-area: c;
-  font-family: "MyFont", sans-serif;
-  color: white;
+  font-family: "MainFont", sans-serif;
+  color: #3d3d3d;
 }
 
 /*# sourceMappingURL=App.css.map */
