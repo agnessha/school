@@ -1,9 +1,10 @@
 
 let defaultState = {
-    users: [
-        {id:1, name: "Ton Lory", status: true,  text: 'Hello', location: {town: 'Riga', country: 'Latvia'}},
-        {id:2, name: "John Gred", status: false,  text: 'lolololololololo', location: {town: 'Riga', country: 'Latvia'}}
-    ]
+    users: [],
+    currentPage: 1,
+    usersTotalCount: 20,
+    pageSize: 4
+
 }
 
 const usersReduce = (state = defaultState, action) => {
@@ -11,7 +12,6 @@ const usersReduce = (state = defaultState, action) => {
         case 'FOLLOW':
             return {
                 ...state,
-                ...state.location,
                 users: state.users.map(u => {
                     if (u.id === action.id) {
                         return {...u, status: true, }
@@ -23,7 +23,6 @@ const usersReduce = (state = defaultState, action) => {
         case 'UNFOLLOW':
             return {
                 ...state,
-                ...state.location,
                 users: state.users.map(u => {
                     if (action.id === u.id){
                         return {...u, status: false}
@@ -32,11 +31,34 @@ const usersReduce = (state = defaultState, action) => {
                     }
                 })
             }
-        case 'SET_USERS':
-            return{
+        case 'GET_USERS':
+            return {
                 ...state,
-                ...state.location,
-                users: [...state.users, action.users]
+                users: [...action.users]
+            }
+        case 'SET_USERS':
+            if (state.users.length === 0) {
+                return {
+                    ...state,
+                    users: action.users
+                }
+            } else {
+                state.users = state.users.concat(action.users);
+                return{
+                    ...state,
+                    users: state.users
+
+                }
+            }
+        case 'CHANGE_PAGE':
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case 'SET_USERS_TOTAL_COUNT':
+            return {
+                ...state,
+                usersTotalCount: action.num
             }
         default:
             return state;
@@ -60,6 +82,24 @@ export const setUsersAction = (users) => {
     return ({
         type: 'SET_USERS',
         users: users
+    })
+}
+export const getUsersAction = (users) => {
+    return ({
+        type: 'GET_USERS',
+        users: users
+    })
+}
+export const changeCurrentPageAction = (page) => {
+    return ({
+        type: 'CHANGE_PAGE',
+        page: page
+    })
+}
+export const setUsersTotalCountAction = (num) => {
+    return ({
+        type: 'SET_USERS_TOTAL_COUNT',
+        num: num
     })
 }
 

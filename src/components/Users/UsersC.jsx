@@ -41,14 +41,15 @@ class Users extends React.Component{
     componentDidMount() {
         const axios = require('axios').default;
 
-            axios
-                .get('https://social-network.samuraijs.com/api/1.0/users?count=4')
-                .then(
-                    response => {
-                        console.log('aga ok');
-                        this.props.setUsersAction(response.data.items)
-                    }
-                );
+        axios
+            .get('https://social-network.samuraijs.com/api/1.0/users?count=4')
+            .then(
+                response => {
+                    console.log('aga ok');
+                    this.props.setUsersAction(response.data.items)
+                    // this.props.setUsersCount(response.data.totalCount)
+                }
+            );
 
     }
 
@@ -63,74 +64,74 @@ class Users extends React.Component{
         }
 
         return (
-        <div className={s.users}>
-            <div>
-            {pages.map(p => {
-                if (p === this.props.currentPage) {
-                    return (
-                        <button className={s.usersBtnActive}>{p}</button>
-                    )
-                }  else {
-                    return (
-                        <button  value={p} onClick={this.changeCurrentPage.bind({p})} data-value={p} className={s.usersBtn}>{p}</button>
-                    )
-                }
-            }
-            )}
-            </div>
-            <div className={s.users_title}>
-                Users
-            </div>
-            <div className={s.users__items}>
-                {this.props.users.map(u =>
-                    <div key={u.id}>
-                        <div className={s.user}>
-                            <div className={s.user_left}>
-                                <div className={s.user_ava}>
-                                    <img src={avatarImg} alt=""/>
-                                </div>
-                                <div className={s.user_status}>
-                                    {u.status ?
-                                        <button onClick={() => {
-                                            this.props.unfollow(u.id)
-                                        }}>UNFOLLOW</button>
-                                        : <button onClick={() => {
-                                            this.props.follow1(u.id)
-                                        }}>FOLLOW</button>}
-                                </div>
-
-                            </div>
-                            <div className={s.user_info}>
-
-                                <div className={s.user_right_info}>
-                                    <div className={s.user_name}>
-                                        {u.name}
+            <div className={s.users}>
+                <div>
+                    {pages.map(p => {
+                            if (p === this.props.currentPage) {
+                                return (
+                                    <button className={s.usersBtnActive}>{p}</button>
+                                )
+                            }  else {
+                                return (
+                                    <button  value={p} onClick={this.changeCurrentPage.bind({p})} data-value={p} className={s.usersBtn}>{p}</button>
+                                )
+                            }
+                        }
+                    )}
+                </div>
+                <div className={s.users_title}>
+                    Users
+                </div>
+                <div className={s.users__items}>
+                    {this.props.users.map(u =>
+                        <div key={u.id}>
+                            <div className={s.user}>
+                                <div className={s.user_left}>
+                                    <div className={s.user_ava}>
+                                        <img src={avatarImg} alt=""/>
                                     </div>
-                                    <div className={s.user_text}>
-                                        {u.text}
+                                    <div className={s.user_status}>
+                                        {u.status ?
+                                            <button onClick={() => {
+                                                this.props.unfollow(u.id)
+                                            }}>UNFOLLOW</button>
+                                            : <button onClick={() => {
+                                                this.props.follow1(u.id)
+                                            }}>FOLLOW</button>}
                                     </div>
-                                </div>
 
-                                <div className={s.user_location}>
-                                    <div className={s.user_location_town}>
-                                        {u.town}
-                                    </div>
-                                    <div className={s.user_location_country}>
-                                        {u.country}
-                                    </div>
                                 </div>
+                                <div className={s.user_info}>
 
+                                    <div className={s.user_right_info}>
+                                        <div className={s.user_name}>
+                                            {u.name}
+                                        </div>
+                                        <div className={s.user_text}>
+                                            {u.text}
+                                        </div>
+                                    </div>
+
+                                    <div className={s.user_location}>
+                                        <div className={s.user_location_town}>
+                                            {u.town}
+                                        </div>
+                                        <div className={s.user_location_country}>
+                                            {u.country}
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
+                <div className={s.users_btn}>
+                    <button onClick={this.showMoreUsers}>
+                        Show more
+                    </button>
+                </div>
             </div>
-            <div className={s.users_btn}>
-                <button onClick={this.showMoreUsers}>
-                    Show more
-                </button>
-            </div>
-        </div>
         )
     }
 }
