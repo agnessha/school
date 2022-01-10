@@ -4,7 +4,8 @@ let defaultState = {
         {id: 1, text: "Hello?", likeCount: 1},
         {id: 2, text: "You are very interesting person!", likeCount: 20}
     ],
-    textareaValue: ""
+    userData: [],
+
 }
 
 const profileReducer = (state = defaultState, action) => {
@@ -23,6 +24,13 @@ const profileReducer = (state = defaultState, action) => {
                 textareaValue: action.value
             };
         }
+        case 'ADD_USER_DATA': {
+
+            return {
+                ...state,
+                userData: action.userData
+            }
+        }
         default:
             return state;
     }
@@ -40,6 +48,12 @@ export const AddPostValueAction = (text) => {
         type: 'ADD-POST-VALUE',
         value: text
     });
+}
+export const addUserDataAC = (userData) => {
+    return ({
+        type: 'ADD_USER_DATA',
+        userData: userData
+    })
 }
 
 export default profileReducer;

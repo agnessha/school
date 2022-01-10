@@ -1,10 +1,11 @@
+import {act} from "@testing-library/react";
 
 let defaultState = {
     users: [],
     currentPage: 1,
     usersTotalCount: 20,
-    pageSize: 4
-
+    pageSize: 4,
+    isFetching: true
 }
 
 const usersReduce = (state = defaultState, action) => {
@@ -14,7 +15,7 @@ const usersReduce = (state = defaultState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.id) {
-                        return {...u, status: true, }
+                        return {...u, followed: true, }
                     } else {
                         return u
                     }
@@ -25,7 +26,7 @@ const usersReduce = (state = defaultState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (action.id === u.id){
-                        return {...u, status: false}
+                        return {...u, followed: false}
                     } else {
                         return u
                     }
@@ -40,7 +41,7 @@ const usersReduce = (state = defaultState, action) => {
             if (state.users.length === 0) {
                 return {
                     ...state,
-                    users: action.users
+                    users: [...action.users]
                 }
             } else {
                 state.users = state.users.concat(action.users);
@@ -59,6 +60,11 @@ const usersReduce = (state = defaultState, action) => {
             return {
                 ...state,
                 usersTotalCount: action.num
+            }
+        case 'CHANGE_FETCHING_STATUS':
+            return {
+                ...state,
+                isFetching: action.status
             }
         default:
             return state;
@@ -100,6 +106,12 @@ export const setUsersTotalCountAction = (num) => {
     return ({
         type: 'SET_USERS_TOTAL_COUNT',
         num: num
+    })
+}
+export const changeFetchingStatus = (status) => {
+    return ({
+        type: 'CHANGE_FETCHING_STATUS',
+        status: status
     })
 }
 

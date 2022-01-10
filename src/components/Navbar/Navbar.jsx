@@ -13,7 +13,7 @@ const Navbar = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.navbarLink}>
-                <NavLink to='/' activeClassName={s.active}>
+                <NavLink to='/profile' activeClassName={s.active}>
                     <img className={s.icon} src={homePage} alt=""/>
                     Profile</NavLink>
             </div>
