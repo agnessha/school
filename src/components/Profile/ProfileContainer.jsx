@@ -7,7 +7,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {connect} from "react-redux";
 import {addUserDataAC} from "../../redux/profileReducer";
 import {changeFetchingStatus} from "../../redux/usersReducer";
-
+import {useParams} from "react-router-dom";
 
 
 
@@ -17,18 +17,9 @@ class ProfileAPI extends React.Component {
     }
 
     componentDidMount() {
-
+        GetUrl();
         const axios = require('axios').default;
-        axios
-            .get('https://social-network.samuraijs.com/api/1.0/profile/2')
-            .then(
-                response => {
 
-                    this.props.changeFetchingStatus(false)
-                    this.props.addUserData(response.data)
-                    // this.props.setUsersCount(response.data.totalCount)
-                }
-            );
         axios
             .get('https://social-network.samuraijs.com/api/1.0/users?count=4')
             .then(
@@ -74,6 +65,22 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
+
 const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPI)
 
 export default ProfileContainer;
+
+function GetUrl()  {
+    let {userId} = useParams()
+    const axios = require('axios').default;
+    axios
+        .get('https://social-network.samuraijs.com/api/1.0/profile/'+ userId)
+        .then(
+            response => {
+
+                this.props.changeFetchingStatus(false)
+                this.props.addUserData(response.data)
+                // this.props.setUsersCount(response.data.totalCount)
+            }
+        );
+}

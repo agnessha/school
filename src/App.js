@@ -7,7 +7,7 @@ import Profile from "./components/Profile/ProfileContainer";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {
     BrowserRouter as Router,
-    Route, Routes
+    Route, Routes, useParams
 } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -18,7 +18,6 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 const App = (props) => {
-
     return (
         <div>
         <Header/>
