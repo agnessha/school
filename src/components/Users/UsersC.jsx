@@ -4,7 +4,6 @@ import avatarImg from '../../img/avatar.svg';
 import preloader from '../../img/preloader.svg'
 import {NavLink} from "react-router-dom";
 
-
 const Users = (props) => {
 
     let pagesCount = Math.ceil(props.usersTotalCount / props.pageSize)

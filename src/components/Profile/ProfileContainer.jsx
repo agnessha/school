@@ -10,48 +10,32 @@ import {changeFetchingStatus} from "../../redux/usersReducer";
 import {useParams} from "react-router-dom";
 
 
+const ProfileAPI = (props) => {
 
-class ProfileAPI extends React.Component {
-    constructor(props) {
-        super(props);
+    let {userId} = useParams()
+    if (props.userData === null) {
+        GetUrl(userId, props)
     }
+    return (
 
-    componentDidMount() {
-        GetUrl();
-        const axios = require('axios').default;
-
-        axios
-            .get('https://social-network.samuraijs.com/api/1.0/users?count=4')
-            .then(
-                response => {
-                    console.log(response.data.items)
-
-                    // this.props.setUsersCount(response.data.totalCount)
-                }
-            );
-    }
-    render() {
-        console.log(this.props.userData)
-        return (
-
-            <div className={s.content}>
-                <div className={s.profile_infoImg}>
-                    <img src={profileImg} alt=""/>
-                </div>
-                <div>
-                    <Profile__info userData={this.props.userData}/>
-                    <MyPostsContainer
-
-                    />
-                </div>
+        <div className={s.content}>
+            <div className={s.profile_infoImg}>
+                <img src={profileImg} alt=""/>
             </div>
-        );
-    }
+            <div>
+                <Profile__info userData={props.userData} photo={props.photo}/>
+                <MyPostsContainer
+
+                />
+            </div>
+        </div>
+    );
 }
 
 let mapStateToProps = (state) => {
     return {
-        userData: state.profilePage.userData
+        userData: state.profilePage.userData,
+        photo: state.profilePage.userData.photos.small
     }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -70,16 +54,17 @@ const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPI
 
 export default ProfileContainer;
 
-function GetUrl()  {
-    let {userId} = useParams()
+function GetUrl(userId , props) {
     const axios = require('axios').default;
+
     axios
-        .get('https://social-network.samuraijs.com/api/1.0/profile/'+ userId)
+        .get('https://social-network.samuraijs.com/api/1.0/profile/' + userId)
         .then(
             response => {
-
-                this.props.changeFetchingStatus(false)
-                this.props.addUserData(response.data)
+                console.log(response)
+                console.log(props.userData)
+                props.changeFetchingStatus(false)
+                props.addUserData(response.data)
                 // this.props.setUsersCount(response.data.totalCount)
             }
         );

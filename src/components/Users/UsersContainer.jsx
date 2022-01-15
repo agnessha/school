@@ -60,7 +60,7 @@ class UsersAPI extends React.Component {
                     console.log(response.data.items)
                     this.props.changeFetchingStatus(false)
                     this.props.getUsersAction(response.data.items)
-                    // this.props.setUsersCount(response.data.totalCount)
+                    // this.props.setUsersCount(response.data.usersTotalCount)
                 }
             );
 

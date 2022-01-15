@@ -4,7 +4,7 @@ let defaultState = {
         {id: 1, text: "Hello?", likeCount: 1},
         {id: 2, text: "You are very interesting person!", likeCount: 20}
     ],
-    userData: [],
+    userData: null,
 
 }
 
@@ -25,10 +25,10 @@ const profileReducer = (state = defaultState, action) => {
             };
         }
         case 'ADD_USER_DATA': {
-
+            debugger
             return {
                 ...state,
-                userData: action.userData
+                userData: [...action.userData]
             }
         }
         default:
