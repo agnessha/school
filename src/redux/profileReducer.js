@@ -1,59 +1,59 @@
+import { bindActionCreators } from "redux";
 
 let defaultState = {
     postData: [
-        {id: 1, text: "Hello?", likeCount: 1},
-        {id: 2, text: "You are very interesting person!", likeCount: 20}
+        { id: 1, text: "Hello?", likeCount: 1 },
+        { id: 2, text: "You are very interesting person!", likeCount: 20 },
     ],
     userData: null,
-
-}
+};
 
 const profileReducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case "ADD-POST": {
+            return {
+                ...state,
+                postData: [
+                    ...state.postData,
+                    { id: 5, text: state.textareaValue, likeCount: 2 },
+                ],
+                textareaValue: "",
+            };
+        }
+        case "ADD-POST-VALUE": {
+            return {
+                ...state,
+                textareaValue: action.value,
+            };
+        }
+        case "ADD_USER_DATA": {
 
-    switch (action.type){
-        case 'ADD-POST': {
             return {
                 ...state,
-                postData: [...state.postData, {id: 5, text: state.textareaValue, likeCount: 2}],
-                textareaValue: ''
+                userData: action.userData,
             };
-        }
-        case 'ADD-POST-VALUE': {
-            return {
-                ...state,
-                textareaValue: action.value
-            };
-        }
-        case 'ADD_USER_DATA': {
-            debugger
-            return {
-                ...state,
-                userData: [...action.userData]
-            }
         }
         default:
             return state;
     }
-
-}
+};
 
 export const AddPostAction = () => {
-    return ({
-        type: 'ADD-POST'
-    });
-}
+    return {
+        type: "ADD-POST",
+    };
+};
 export const AddPostValueAction = (text) => {
-
-    return ({
-        type: 'ADD-POST-VALUE',
-        value: text
-    });
-}
+    return {
+        type: "ADD-POST-VALUE",
+        value: text,
+    };
+};
 export const addUserDataAC = (userData) => {
-    return ({
-        type: 'ADD_USER_DATA',
-        userData: userData
-    })
-}
+    return {
+        type: "ADD_USER_DATA",
+        userData: userData,
+    };
+};
 
 export default profileReducer;

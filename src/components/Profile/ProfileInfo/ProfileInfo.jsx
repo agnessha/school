@@ -8,7 +8,7 @@ console.log(props)
     return (
         <div className={s.profile_info}>
             <div className={s.ava}>
-                <img src={props.photo ? props.photo :
+                <img src={props.userData.photos.small ? props.userData.photos.small :
                     "https://klike.net/uploads/posts/2020-04/1587719791_1.jpg"} alt=""/>
             </div>
             <div className={s.description}>
