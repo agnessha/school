@@ -52,10 +52,7 @@ let mapDispatchToProps = (dispatch) => {
     };
 };
 
-const ProfileContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ProfileAPI);
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPI);
 
 export default ProfileContainer;
 

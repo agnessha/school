@@ -12,9 +12,13 @@ header img {
   top: 0;
   width: 100%;
   z-index: 9999;
-  padding: 15px 0 10px 20%;
+  padding: 15px 20% 10px 20%;
   height: 65px;
   font-size: 20px;
+}
+
+.userData {
+  float: right;
 }
 
 /*# sourceMappingURL=Header.module.css.map */
