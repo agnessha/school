@@ -33,6 +33,7 @@ const usersReduce = (state = defaultState, action) => {
                 })
             }
         case 'GET_USERS':
+            console.log(action.users)
             return {
                 ...state,
                 users: [...action.users]

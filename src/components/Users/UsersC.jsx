@@ -19,18 +19,18 @@ const Users = (props) => {
         <div className={s.users}>
             <div>
                 {pages.map(p => {
-
-                        if (p === props.currentPage) {
-                            return (
-                                <button className={s.usersBtnActive}>{p}</button>
-                            )
-                        }  else {
-                            return (
-                                <button  value={p} onClick={props.changeCurrentPage.bind({p})} data-value={p} className={s.usersBtn}>{p}</button>
-                            )
-                        }
+                    if (p ===props.currentPage) {
+                        return (
+                            <button className={s.usersBtnActive}>{p}</button>
+                        )
+                    } else{
+                        return (
+                            <button value={p} onClick={props.changeCurrentPage.bind({p})}
+                                    data-value={p}
+                                    className={s.usersBtn}>{p}</button>
+                        )
                     }
-                )}
+                })}
             </div>
             {
                 props.isFetching ? <img src={preloader}/> : ''
@@ -41,6 +41,7 @@ const Users = (props) => {
             </div>
             <div className={s.users__items}>
                 {props.users.map(u => {
+                    console.log(u)
                     let hrefToProfile = '/profile/'
                     return (
                     <div key={u.id}>
@@ -56,10 +57,34 @@ const Users = (props) => {
                                 <div className={s.user_status}>
                                     {u.followed ?
                                         <button onClick={() => {
-                                            props.unfollow(u.id)
+                                            const axios = require("axios").default;
+                                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},{
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        'API-KEY': "6f9e0b57-82fa-4bdc-9e30-6f3544f7b7a2"
+                                                    }
+                                                })
+                                                .then((response) => {
+
+                                                    if (response.data.resultCode === 0) {
+                                                        props.unfollow(u.id)
+                                                    }
+                                                });
                                         }}>UNFOLLOW</button>
                                         : <button onClick={() => {
-                                            props.follow1(u.id)
+                                            const axios = require("axios").default;
+                                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},{
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        'API-KEY': "6f9e0b57-82fa-4bdc-9e30-6f3544f7b7a2"
+                                                    }
+                                                })
+                                                .then((response) => {
+                                                    debugger
+                                                    if (response.data.resultCode === 0) {
+                                                        props.follow1(u.id)
+                                                    }
+                                                });
                                         }}>FOLLOW</button>}
                                 </div>
 
@@ -90,9 +115,9 @@ const Users = (props) => {
                 )})}
             </div>
             <div className={s.users_btn}>
-                <button onClick={props.showMoreUsers}>
-                    Show more
-                </button>
+                {/*<button onClick={props.showMoreUsers}>*/}
+                {/*    Show more*/}
+                {/*</button>*/}
             </div>
         </div>
     )
