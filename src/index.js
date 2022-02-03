@@ -18,7 +18,6 @@ import {Provider} from "react-redux";
 
 
 export const renderEntireTree = (state) => {
-    console.log(store.getState())
 
     ReactDOM.render(
         <React.StrictMode>

@@ -3,7 +3,6 @@ import s from './Header.module.css';
 import imageLogo from '../../img/Notes.......png';
 
 const Header = (props) => {
-    console.log(props.userDataH)
     if (props.userDataH !== null) {
         return (
         <header className={s.header}>
