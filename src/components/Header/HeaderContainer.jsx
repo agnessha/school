@@ -12,6 +12,14 @@ import {UsersApi} from "../../api/api";
 
 const HeaderAPI = (props) => {
 
+    let a = 7;
+
+    setTimeout(() => {
+        a = 99;
+
+    }, 3000)
+
+    console.log(a)
     let { userId } = useParams()
     useEffect(() => {
         UsersApi.auth().then((data) => {

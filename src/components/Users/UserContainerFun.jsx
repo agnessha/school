@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {
     changeCurrentPageAction,
-    changeFetchingStatus,
+    changeFetchingStatus, changeFollowingStatus,
     followAction,
     getUsersAction,
     setUsersAction, setUsersTotalCountAction,
@@ -48,8 +48,9 @@ const UserAPI = (props) => {
                 follow1={props.follow1}
                 unfollow={props.unfollow}
                 changeCurrentPage={changeCurrentPage}
-
                 isFetching={props.isFetching}
+                isFollowing={props.isFollowing}
+                changeFollowingStatus={props.changeFollowingStatus}
             />
         </div>
     )
@@ -61,7 +62,8 @@ let mapStateToProps = (state) => {
         usersTotalCount: state.usersPage.usersTotalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isFollowing: state.usersPage.isFollowing
     }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -101,6 +103,10 @@ let mapDispatchToProps = (dispatch) => {
         },
         changeFetchingStatus: (status) => {
             dispatch(changeFetchingStatus(status))
+        },
+        changeFollowingStatus: (status, id) => {
+
+            dispatch(changeFollowingStatus(status, id))
         }
     }
 }

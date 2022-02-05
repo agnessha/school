@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./UsersC";
 import {
-    changeCurrentPageAction, changeFetchingStatus,
+    changeCurrentPageAction, changeFetchingStatus, changeFollowingStatus,
     followAction,
     getUsersAction,
     setUsersAction, setUsersTotalCountAction,
@@ -51,6 +51,7 @@ class UsersAPI extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.props.changeFetchingStatus(true)
         const axios = require('axios').default;
         axios
@@ -76,6 +77,8 @@ class UsersAPI extends React.Component {
                    unfollow={this.props.unfollow}
                    changeCurrentPage={this.changeCurrentPage} showMoreUsers={this.showMoreUsers}
                    isFetching={this.props.isFetching}
+                   isFollowing={this.props.isFollowing}
+                   changeFollowingStatus={this.props.changeFollowingStatus}
             />
         )
     }
@@ -88,7 +91,8 @@ let mapStateToProps = (state) => {
         usersTotalCount: state.usersPage.usersTotalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isFollowing: state.usersPage.isFollowing
     }
 }
 
@@ -129,6 +133,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         changeFetchingStatus: (status) => {
             dispatch(changeFetchingStatus(status))
+        },
+        changeFollowingStatus: (status) => {
+            dispatch(changeFollowingStatus(status))
         }
     }
 }

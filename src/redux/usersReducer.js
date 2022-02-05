@@ -5,7 +5,8 @@ let defaultState = {
     currentPage: 1,
     usersTotalCount: 20,
     pageSize: 4,
-    isFetching: true
+    isFetching: true,
+    isFollowing: []
 }
 
 const usersReduce = (state = defaultState, action) => {
@@ -66,6 +67,14 @@ const usersReduce = (state = defaultState, action) => {
                 ...state,
                 isFetching: action.status
             }
+        case 'CHANGE_FOLLOWING_STATUS':
+
+            return {
+                ...state,
+                isFollowing: action.status
+                ? [...state.isFollowing, action.id] :
+                    state.isFollowing.filter(id => id != action.id)
+            }
         default:
             return state;
     }
@@ -112,6 +121,13 @@ export const changeFetchingStatus = (status) => {
     return ({
         type: 'CHANGE_FETCHING_STATUS',
         status: status
+    })
+}
+export const changeFollowingStatus = (status, id) => {
+    return ({
+        type: 'CHANGE_FOLLOWING_STATUS',
+        status: status,
+        id: id
     })
 }
 
