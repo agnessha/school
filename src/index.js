@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -15,23 +15,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import store from "./redux/redux-store";
 import App from "./App";
 import {Provider} from "react-redux";
+import { ChakraProvider } from '@chakra-ui/react'
+import {motion} from 'framer-motion/dist/es/index'
+import {AnimatePresence, motion1} from 'framer-motion/dist/framer-motion'
+
+
 
 
 export const renderEntireTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
+
             <Router>
                 <Provider store={store}>
-                <App
-                    getState={store.getState.bind(store)}
-                    store={store}
-                    profilePage={state.profilePage}
-                    dialogData={state.dialogPage.dialogData}
-                    messagesData={state.dialogPage.messagesData}
-                    dispatch={store.dispatch.bind(store)}
-                    textareaMessageValue={state.dialogPage.textareaMessageValue}
-                />
+                    <ChakraProvider>
+
+                        <App
+                            getState={store.getState.bind(store)}
+                            store={store}
+                            profilePage={state.profilePage}
+                            dialogData={state.dialogPage.dialogData}
+                            messagesData={state.dialogPage.messagesData}
+                            dispatch={store.dispatch.bind(store)}
+                            textareaMessageValue={state.dialogPage.textareaMessageValue}
+                        />
+                    </ChakraProvider>
+
                 </Provider>
             </Router>
         </React.StrictMode>,

@@ -18,6 +18,7 @@ const ProfileAPI = (props) => {
     if (props.userData === null) {
         return <div>loading...</div>;
     } else {
+        console.log(props.userData)
         return (
             <div className={s.content}>
                 <div className={s.profile_infoImg}>

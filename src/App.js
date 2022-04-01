@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
+import NavbarCon from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/ProfileContainer";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {
@@ -16,6 +16,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainerFun from "./components/Users/UserContainerFun";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {Login} from "./components/Login/Login";
 
 
 const App = (props) => {
@@ -24,9 +25,10 @@ const App = (props) => {
         <HeaderContainer store={props.store}/>
             <div className='app-wrapper'>
 
-                <Navbar friendsData={props.friendsData}/>
+                <NavbarCon friendsData={props.friendsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
+                        <Route path='/login' element={<Login />} />
                         <Route path='/profile/:userId' element={<ProfileContainer store={props.store}/>}/>
                         <Route path='/dialogs' element={<DialogsContainer store={props.store}/>}/>
                         <Route path='/news' element={<News />}/>
