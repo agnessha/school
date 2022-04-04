@@ -15,6 +15,10 @@ const authReducer = (state = defaultState, action) => {
                     userEmail: action.userEmail
                 }
             }
+        case 'EXIT':
+            return {
+                userDataH: null
+            }
         default:
             return state;
     }
@@ -27,6 +31,11 @@ export const getUserDataAC = (id, login, email) => {
         userId: id,
         userLogin: login,
         userEmail: email
+    })
+}
+export const exitFromUserProfile = () => {
+    return ({
+        type: 'EXIT'
     })
 }
 

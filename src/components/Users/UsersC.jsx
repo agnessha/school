@@ -16,31 +16,15 @@ const Users = (props) => {
     }
     return (
         <div className={s.users}>
-            <div>
-                {pages.map(p => {
-                    if (p ===props.currentPage) {
-                        return (
-                            <button className={s.usersBtnActive}>{p}</button>
-                        )
-                    } else{
-                        return (
-                            <button value={p} onClick={props.changeCurrentPage.bind({p})}
-                                    data-value={p}
-                                    className={s.usersBtn}>{p}</button>
-                        )
-                    }
-                })}
-            </div>
+
             {
                 props.isFetching ? <img src={preloader}/> : ''
             }
 
-            <div className={s.users_title}>
-                Users
-            </div>
             <div className={s.users__items}>
                 {props.users.map(u => {
                     let hrefToProfile = '/profile/'
+                    console.log(u)
                     return (
                     <div key={u.id}>
                         <div className={s.user}>
@@ -108,6 +92,21 @@ const Users = (props) => {
                 {/*<button onClick={props.showMoreUsers}>*/}
                 {/*    Show more*/}
                 {/*</button>*/}
+            </div>
+            <div className={s.usersButtons}>
+                {pages.map(p => {
+                    if (p ===props.currentPage) {
+                        return (
+                            <button className={s.usersBtnActive} />
+                        )
+                    } else{
+                        return (
+                            <button value={p} onClick={props.changeCurrentPage.bind({p})}
+                                    data-value={p}
+                                    className={s.usersBtn} />
+                        )
+                    }
+                })}
             </div>
         </div>
     )

@@ -12,23 +12,16 @@ import {UsersApi} from "../../api/api";
 
 const HeaderAPI = (props) => {
 
-    let a = 7;
 
-    setTimeout(() => {
-        a = 99;
-
-    }, 3000)
-
-    console.log(a)
     let { userId } = useParams()
     useEffect(() => {
         UsersApi.auth().then((data) => {
-
+                debugger
                 props.getUserData(data.data.id,
                     data.data.login,
                     data.data.email)
             });
-    }, [userId]);
+    }, []);
     return (
         <Header {...props} />
     )
@@ -50,20 +43,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-// let GetDataAPI = (props) => {
-//     const axios = require("axios").default;
-//     axios
-//         .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-//             withCredentials: true
-//         })
-//         .then((response) => {
-//
-//             console.log(response)
-//             props.getUserData(response.data.id,
-//                 response.data.login,
-//                 response.data.email )
-//         });
-// }
 
 const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderAPI)
 

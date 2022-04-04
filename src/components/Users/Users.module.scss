@@ -10,16 +10,16 @@
 .users_btn button {
   height: 62px;
   width: 170px;
-  background-color: #267de0;
+  background-color: #4CC9F0;
   text-align: center;
   border-radius: 6px;
-  border: 1px #267de0 solid;
+  border: 1px #4CC9F0 solid;
   display: inline-block;
   margin: 0 auto 30px;
   font-size: 25px;
 }
 .users_btn button:hover {
-  background-color: #3f4fe0;
+  background-color: #4CC9F0;
   cursor: pointer;
 }
 
@@ -36,15 +36,15 @@
 .user_status button {
   height: 37px;
   width: 100px;
-  background-color: #267de0;
+  background-color: #4CC9F0;
   text-align: center;
   border-radius: 6px;
-  border: 1px #267de0 solid;
+  border: 1px #4CC9F0 solid;
   display: inline-block;
   margin: 10px 0;
 }
 .user_status button:hover {
-  background-color: #3f4fe0;
+  background-color: #4CC9F0;
   cursor: pointer;
 }
 .user_left {
@@ -70,11 +70,24 @@
 }
 
 .usersBtnActive {
-  background-color: red;
+  background-color: #B5179E;
+  width: 15px;
+  margin: 3px;
+  border-radius: 50%;
+  height: 15px;
 }
 
 .usersBtn {
-  background-color: green;
+  background-color: #560BAD;
+  margin: 3px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+
+}
+.usersButtons{
+  width: 30%;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=Users.module.css.map */

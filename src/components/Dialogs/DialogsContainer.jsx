@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return {
         dialogPage: state.dialogPage,
-                textareaMessageValue: state.textareaMessageValue
+        textareaMessageValue: state.textareaMessageValue
     }
 }
 

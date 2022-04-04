@@ -8,15 +8,29 @@ import { addUserDataAC } from "../../redux/profileReducer";
 import { changeFetchingStatus } from "../../redux/usersReducer";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import {getUserDataAC} from "../../redux/authReducer";
+import {UsersApi} from "../../api/api";
+import {useNavigate, NavLink} from "react-router-dom";
+
 
 
 const ProfileAPI = (props) => {
+    const navigate = useNavigate()
     let { userId } = useParams();
+    if (userId === undefined) {
+        navigate('/login')
+    }
     useEffect(() => {
         GetUrl(userId, props);
+        UsersApi.auth().then((data) => {
+            console.log(data)
+            props.getUserData(data.data.id,
+                data.data.login,
+                data.data.email)
+        });
     }, [userId]);
-    if (props.userData === null) {
-        return <div>loading...</div>;
+    if (props.userDataH === null) {
+        navigate('/login')
     } else {
         console.log(props.userData)
         return (
@@ -25,7 +39,7 @@ const ProfileAPI = (props) => {
                     <img src={profileImg} alt="" />
                 </div>
                 <div>
-                    <Profile__info userData={props.userData} photo={props.photo} />
+                    <Profile__info userDataH={props.userDataH} userData={props.userData} photo={props.photo} />
                     <MyPostsContainer />
                 </div>
             </div>
@@ -35,6 +49,7 @@ const ProfileAPI = (props) => {
 
 let mapStateToProps = (state) => {
     return {
+        userDataH: state.auth.userDataH,
         userData: state.profilePage.userData,
         photo:
             state.profilePage.userData !== null
@@ -50,6 +65,9 @@ let mapDispatchToProps = (dispatch) => {
         changeFetchingStatus: (status) => {
             dispatch(changeFetchingStatus(status));
         },
+        getUserData: (id, login, email) => {
+            dispatch(getUserDataAC(id, login, email))
+        }
     };
 };
 

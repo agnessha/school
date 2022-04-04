@@ -9,57 +9,34 @@ import settingImg from "../../img/setting.png"
 import userImg from '../../img/user.png'
 import {connect} from "react-redux";
 import { Box, Text, Flex, Image } from '@chakra-ui/react'
+import {UsersApi} from "../../api/api";
+import {addUserDataAC} from "../../redux/profileReducer";
+import {getUserDataAC} from "../../redux/authReducer";
+
 
 
 
 const Navbar = (props) => {
+
+    useEffect(() => {
+        UsersApi.auth().then((data) => {
+            console.log(data)
+            props.getUserData(data.data.id,
+                data.data.login,
+                data.data.email)
+        })
+    }, [])
     const navigate = useNavigate();
 
 
-    console.log(props)
-    console.log(props.userData)
     let hrefToLogin = '/login'
     let href = '/profile/'
+    console.log(props.userDataH)
     return (
         <div>
-        {/*<nav className={s.nav}>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to={props.userData === null || props.userData.userId === undefined? hrefToLogin : href + props.userData.userId} activeClassName={s.active}>*/}
-        {/*            <img className={s.icon} src={homePage} alt=""/>*/}
-        {/*            Profile</NavLink>*/}
-        {/*    </div>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to='/dialogs'>*/}
-        {/*            <img className={s.icon} src={dialogImg} alt=""/>*/}
-        {/*            Dialogs</NavLink>*/}
-        {/*    </div>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to='/news'>*/}
-        {/*            <img className={s.icon} src={newsImg} alt=""/>*/}
-        {/*            News</NavLink>*/}
-        {/*    </div>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to='/music' >*/}
-        {/*            <img className={s.icon} src={musicImg} alt=""/>*/}
-        {/*            Music</NavLink>*/}
-        {/*    </div>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to='/users' >*/}
-        {/*            <img className={s.icon} src={userImg} alt=""/>*/}
-        {/*            Users</NavLink>*/}
-        {/*    </div>*/}
-        {/*    <div className={s.navbarLink}>*/}
-        {/*        <NavLink to='/settings'>*/}
-        {/*            <img className={s.icon} src={settingImg} alt=""/>*/}
-        {/*            Settings</NavLink>*/}
-        {/*    </div>*/}
-
-
-
-        {/*</nav>*/}
             <Box margin='77px 0 '>
                 <Box>
-                    <NavLink to={props.userData === null || props.userData.userId === undefined? hrefToLogin : href + props.userData.userId}>
+                        <NavLink to={props.userDataH === null || props.userDataH.userId === undefined ? '/login' : href + props.userDataH.userId}>
                         <Flex>
                         <Image margin='auto 0'  className={s.icon} src={homePage} alt=""/>
                         <Text className={s.text}>
@@ -69,7 +46,7 @@ const Navbar = (props) => {
                         </NavLink>
                 </Box>
                 <Box>
-                    <NavLink to='/dialogs'>
+                    <NavLink to={props.userData === null || props.userData.userId === undefined? hrefToLogin : '/dialogs'}>
                         <Flex>
                             <Image margin='auto 0'  className={s.icon} src={dialogImg} alt=""/>
                             <Text className={s.text}>
@@ -125,10 +102,19 @@ const Navbar = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        userData: state.auth.userDataH
+        userData: state.profilePage.userData,
+        userDataH: state.auth.userDataH
+    }
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+
+        getUserData: (id, login, email) => {
+            dispatch(getUserDataAC(id, login, email))
+        }
     }
 }
 
-let NavbarCon = connect(mapStateToProps, null)(Navbar)
+let NavbarCon = connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
 export default NavbarCon;

@@ -1,13 +1,12 @@
 header img {
-  width: 200px;
-  margin: 10px;
+  width: 150px;
   color: white;
-  margin-left: 20%;
+  display: inline-block;
 }
 
 .header {
   grid-area: h;
-  background-color: #f0f0f0;
+  background-color: #3A0CA3;
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,6 +18,9 @@ header img {
 
 .userData {
   float: right;
+  padding: 15px;
+  display: inline-block;
+  color: white;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

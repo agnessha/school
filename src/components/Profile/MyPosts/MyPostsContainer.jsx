@@ -35,28 +35,3 @@ const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer;
 
-// const MyPostsContainer = (props) => {
-//
-//
-//     let textAreaNewValue = (text) => {
-//         let action = AddPostValueAction(text)
-//         store.dispatch(action)
-//     }
-//     let createPost = () => {
-//         let action = AddPostAction();
-//         store.dispatch(action)
-//     }
-//
-//     let profilePage = props.store.getState().profilePage
-//     let value = props.store.getState().profilePage.textareaValue
-//
-//     return (
-//         <MyPosts
-//         textAreaNewValue={textAreaNewValue}
-//         createPost={createPost}
-//         profilePage={profilePage}
-//
-//         />
-//
-//     );
-// }

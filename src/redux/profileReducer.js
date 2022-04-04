@@ -26,8 +26,8 @@ const profileReducer = (state = defaultState, action) => {
                 textareaValue: action.value,
             };
         }
-        case "ADD_USER_DATA": {
-
+        case "USER": {
+            console.log('llllllllllllllllllllllllllllllllllllllllllll')
             return {
                 ...state,
                 userData: action.userData,
@@ -50,8 +50,9 @@ export const AddPostValueAction = (text) => {
     };
 };
 export const addUserDataAC = (userData) => {
+
     return {
-        type: "ADD_USER_DATA",
+        type: "USER",
         userData: userData,
     };
 };
