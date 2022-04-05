@@ -8,6 +8,8 @@ import {Col} from "react-bootstrap";
 import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 let mapStateToProps = (state) => {
     return {
@@ -28,8 +30,10 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 
 
-export default DialogsContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    userAuthHoc
+)(Dialogs);

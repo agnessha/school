@@ -6,33 +6,26 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from "react-redux";
 import { addUserDataAC } from "../../redux/profileReducer";
 import { changeFetchingStatus } from "../../redux/usersReducer";
-import { useParams } from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import { useEffect } from "react";
 import {getUserDataAC} from "../../redux/authReducer";
 import {UsersApi} from "../../api/api";
 import {useNavigate, NavLink} from "react-router-dom";
+import {compose} from "redux";
+import store from "../../redux/redux-store";
+import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 
 const ProfileAPI = (props) => {
     const navigate = useNavigate()
     let { userId } = useParams();
-    if (userId === undefined) {
-        navigate('/login')
-    }
+
     useEffect(() => {
         GetUrl(userId, props);
-        UsersApi.auth().then((data) => {
-            console.log(data)
-            props.getUserData(data.data.id,
-                data.data.login,
-                data.data.email)
-        });
+
     }, [userId]);
-    if (props.userDataH === null) {
-        navigate('/login')
-    } else {
-        console.log(props.userData)
+
         return (
             <div className={s.content}>
                 <div className={s.profile_infoImg}>
@@ -44,7 +37,7 @@ const ProfileAPI = (props) => {
                 </div>
             </div>
         );
-    }
+
 };
 
 let mapStateToProps = (state) => {
@@ -71,9 +64,13 @@ let mapDispatchToProps = (dispatch) => {
     };
 };
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPI);
 
-export default ProfileContainer;
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    userAuthHoc
+)(ProfileAPI)
+
 
 function GetUrl(userId, props) {
     const axios = require("axios").default;
