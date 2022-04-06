@@ -4,12 +4,12 @@ import profileImg from "../../img/Landscape-Color.jpg";
 import Profile__info from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from "react-redux";
-import { addUserDataAC } from "../../redux/profileReducer";
+import {addUserDataAC, getStatus} from "../../redux/profileReducer";
 import { changeFetchingStatus } from "../../redux/usersReducer";
 import {Navigate, useParams} from "react-router-dom";
 import { useEffect } from "react";
 import {getUserDataAC} from "../../redux/authReducer";
-import {UsersApi} from "../../api/api";
+import {profileAPI, UsersApi} from "../../api/api";
 import {useNavigate, NavLink} from "react-router-dom";
 import {compose} from "redux";
 import store from "../../redux/redux-store";
@@ -23,16 +23,23 @@ const ProfileAPI = (props) => {
 
     useEffect(() => {
         GetUrl(userId, props);
-
+        profileAPI.getStatus(userId).then((data) => {
+            props.getStatus(data)
+        })
     }, [userId]);
-
+    console.log(props.status)
         return (
             <div className={s.content}>
                 <div className={s.profile_infoImg}>
                     <img src={profileImg} alt="" />
                 </div>
                 <div>
-                    <Profile__info userDataH={props.userDataH} userData={props.userData} photo={props.photo} />
+                    <Profile__info
+                        getStatus={props.getStatus}
+                        status={props.status}
+                        userDataH={props.userDataH}
+                        userData={props.userData}
+                        photo={props.photo} />
                     <MyPostsContainer />
                 </div>
             </div>
@@ -42,6 +49,7 @@ const ProfileAPI = (props) => {
 
 let mapStateToProps = (state) => {
     return {
+        status: state.profilePage.status,
         userDataH: state.auth.userDataH,
         userData: state.profilePage.userData,
         photo:
@@ -60,6 +68,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getUserData: (id, login, email) => {
             dispatch(getUserDataAC(id, login, email))
+        },
+        getStatus: (status) => {
+            dispatch(getStatus(status))
         }
     };
 };
@@ -68,7 +79,7 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    userAuthHoc
+    // userAuthHoc
 )(ProfileAPI)
 
 

@@ -16,7 +16,6 @@ const HeaderAPI = (props) => {
     let { userId } = useParams()
     useEffect(() => {
         UsersApi.auth().then((data) => {
-                debugger
                 props.getUserData(data.data.id,
                     data.data.login,
                     data.data.email)

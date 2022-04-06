@@ -6,6 +6,7 @@ let defaultState = {
         { id: 2, text: "You are very interesting person!", likeCount: 20 },
     ],
     userData: null,
+    status: null,
 };
 
 const profileReducer = (state = defaultState, action) => {
@@ -27,10 +28,15 @@ const profileReducer = (state = defaultState, action) => {
             };
         }
         case "USER": {
-            console.log('llllllllllllllllllllllllllllllllllllllllllll')
             return {
                 ...state,
                 userData: action.userData,
+            };
+        }
+        case "GET_STATUS": {
+            return {
+                ...state,
+                status: action.status,
             };
         }
         default:
@@ -56,5 +62,11 @@ export const addUserDataAC = (userData) => {
         userData: userData,
     };
 };
+export const getStatus = (status) => {
+    return {
+        type: 'GET_STATUS',
+        status: status
+    }
+}
 
 export default profileReducer;
