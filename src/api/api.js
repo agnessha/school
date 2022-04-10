@@ -56,6 +56,12 @@ export const profileAPI = {
         }).then(response => {
             return response.data
         })
+    },
+    login(userData) {
+        const axios = require("axios").default;
+        return instance.post(`auth/login`, {userData}).then(response => {
+            return response.data
+        })
     }
 }
 

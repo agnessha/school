@@ -1,4 +1,5 @@
 import {act} from "@testing-library/react";
+import {UsersApi} from "../api/api";
 
 let defaultState = {
     users: [],
@@ -9,7 +10,7 @@ let defaultState = {
     isFollowing: []
 }
 
-const usersReduce = (state = defaultState, action) => {
+const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'FOLLOW':
             return {
@@ -131,5 +132,14 @@ export const changeFollowingStatus = (status, id) => {
     })
 }
 
-export default usersReduce;
+export const getUsersThunkCreator = () => {
+    return (dispatch) => {
+        UsersApi.getUsers().then((data) => {
+            dispatch(changeFetchingStatus(false))
+            dispatch(getUsersAction(data.items))
+        });
+    }
+}
+
+export default usersReducer;
 

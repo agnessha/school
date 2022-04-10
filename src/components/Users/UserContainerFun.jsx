@@ -4,27 +4,19 @@ import {
     changeCurrentPageAction,
     changeFetchingStatus, changeFollowingStatus,
     followAction,
-    getUsersAction,
+    getUsersAction, getUsersThunkCreator,
     setUsersAction, setUsersTotalCountAction,
-    unfollowAction
+    unfollowAction, changeCurrentPageThunkCreator
 } from "../../redux/usersReducer";
 import Users from "./UsersC";
-import {useParams} from "react-router-dom";
 import {UsersApi} from "../../api/api";
 
 
-
 const UserAPI = (props) => {
-
-    let { userid } = useParams()
-
+    props.getUsersThunkCreator()
     useEffect(() => {
-
-            UsersApi.getUsers().then((data) => {
-                props.changeFetchingStatus(false)
-                props.getUsersAction(data.items)
-            });
-    }, [userid]);
+        props.getUsersThunkCreator()
+    }, []);
 
     let changeCurrentPage = (event) => {
         console.log(event);
@@ -32,11 +24,11 @@ const UserAPI = (props) => {
         props.changePageAction(page)
         props.changeFetchingStatus(true)
 
-        const axios = require('axios').default;
-        UsersApi.changeCurrentPage(event.currentTarget.dataset.value).then(data => {
-            props.changeFetchingStatus(false)
-            props.getUsersAction(data.items)
-        })
+        // UsersApi.changeCurrentPage(event.currentTarget.dataset.value).then(data => {
+        //     props.changeFetchingStatus(false)
+        //     props.getUsersAction(data.items)
+        // })
+       props.changeCurrentPageThunkCreator(event.currentTarget.dataset.value)
     }
     return (
         <div>
@@ -107,7 +99,9 @@ let mapDispatchToProps = (dispatch) => {
         changeFollowingStatus: (status, id) => {
 
             dispatch(changeFollowingStatus(status, id))
-        }
+        },
+        getUsersThunkCreator,
+        // changeCurrentPageThunkCreator
     }
 }
 
