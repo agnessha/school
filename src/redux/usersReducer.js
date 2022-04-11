@@ -69,12 +69,9 @@ const usersReducer = (state = defaultState, action) => {
                 isFetching: action.status
             }
         case 'CHANGE_FOLLOWING_STATUS':
-
             return {
                 ...state,
-                isFollowing: action.status
-                ? [...state.isFollowing, action.id] :
-                    state.isFollowing.filter(id => id != action.id)
+                isFollowing: action.status ? [...state.isFollowing, action.id] : state.isFollowing.filter(id => id !== action.id)
             }
         default:
             return state;
@@ -148,6 +145,28 @@ export const changeCurrentPageThunkCreator = (page) => {
             dispatch(changeFetchingStatus(false))
             dispatch(getUsersAction(data.items))
         })
+    }
+}
+export const followThunkCreator = (userId) => {
+    return (dispatch) => {
+        dispatch(changeFollowingStatus(true, userId))
+        UsersApi.follow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(followAction(userId))
+            }
+            dispatch(changeFollowingStatus(false, userId))
+        });
+    }
+}
+export const unfollowThunkCreator = (userId) => {
+    return (dispatch) => {
+        dispatch(changeFollowingStatus(true, userId))
+        UsersApi.unfollow(userId).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowAction(userId))
+            }
+            dispatch(changeFollowingStatus(false, userId))
+        });
     }
 }
 

@@ -6,10 +6,10 @@ import {
     followAction,
     getUsersAction, getUsersThunkCreator,
     setUsersAction, setUsersTotalCountAction,
-    unfollowAction, changeCurrentPageThunkCreator
+    unfollowAction, changeCurrentPageThunkCreator, followThunkCreator,
+    unfollowThunkCreator
 } from "../../redux/usersReducer";
 import Users from "./UsersC";
-import {UsersApi} from "../../api/api";
 
 
 const UserListComponent = (props) => {
@@ -18,12 +18,10 @@ const UserListComponent = (props) => {
     }, []);
 
     let changeCurrentPage = (event) => {
-        console.log('lololo');
         let page = parseInt(event.currentTarget.dataset.value)
-        // props.changePageAction(page)
-        // props.changeFetchingStatus(true)
         props.changeCurrentPageThunkCreator(page)
     }
+
     return (
         <div>
             <Users
@@ -37,6 +35,9 @@ const UserListComponent = (props) => {
                 isFetching={props.isFetching}
                 isFollowing={props.isFollowing}
                 changeFollowingStatus={props.changeFollowingStatus}
+                followThunkCreator={props.followThunkCreator}
+                unfollowThunkCreator={props.unfollowThunkCreator}
+
             />
         </div>
     )
@@ -78,26 +79,21 @@ let mapDispatchToProps = (dispatch) => {
         setUsersAction: (users) => {
             dispatch(setUsersAction(users))
         },
-        getUsersAction: (users) => {
-            dispatch(getUsersAction(users))
-        },
+
         changePageAction: (page) => {
             dispatch(changeCurrentPageAction(page))
-        },
-        setUsersCount: (num) => {
-            dispatch(setUsersTotalCountAction(num))
         },
         changeFetchingStatus: (status) => {
             dispatch(changeFetchingStatus(status))
         },
         changeFollowingStatus: (status, id) => {
-
             dispatch(changeFollowingStatus(status, id))
         },
         getUsersThunkCreator: () => {dispatch(getUsersThunkCreator())},
-        changeCurrentPageThunkCreator: (page) => {
-            dispatch(changeCurrentPageThunkCreator(page))
-        }
+        changeCurrentPageThunkCreator: (page) => {dispatch(changeCurrentPageThunkCreator(page))},
+        followThunkCreator: (userId) => {dispatch(followThunkCreator(userId))},
+        unfollowThunkCreator: (userId) => {dispatch(unfollowThunkCreator(userId))}
+
     }
 }
 

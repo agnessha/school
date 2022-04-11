@@ -4,7 +4,8 @@ import profileImg from "../../img/Landscape-Color.jpg";
 import Profile__info from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from "react-redux";
-import {addUserDataAC, getStatus} from "../../redux/profileReducer";
+import {addUserDataAC, getStatus, getUserDataThunkCreator,
+    updateUserStatusThunkCreator} from "../../redux/profileReducer";
 import { changeFetchingStatus } from "../../redux/usersReducer";
 import {Navigate, useParams} from "react-router-dom";
 import { useEffect } from "react";
@@ -22,11 +23,13 @@ const ProfileAPI = (props) => {
     let { userId } = useParams();
 
     useEffect(() => {
-        GetUrl(userId, props);
-        profileAPI.getStatus(userId).then((data) => {
-            props.getStatus(data)
-        })
+        props.getUserDataThunkCreator(userId)
     }, [userId]);
+
+    let updateStatus = (status) => {
+        props.updateUserStatusThunkCreator(status)
+    }
+
     console.log(props.status)
         return (
             <div className={s.content}>
@@ -35,6 +38,7 @@ const ProfileAPI = (props) => {
                 </div>
                 <div>
                     <Profile__info
+                        updateStatus={updateStatus}
                         getStatus={props.getStatus}
                         status={props.status}
                         userDataH={props.userDataH}
@@ -71,7 +75,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getStatus: (status) => {
             dispatch(getStatus(status))
-        }
+        },
+        getUserDataThunkCreator: (userId) => {dispatch(getUserDataThunkCreator(userId))},
+        updateUserStatusThunkCreator: (status) => {dispatch(updateUserStatusThunkCreator(status))}
     };
 };
 
@@ -83,15 +89,3 @@ export default compose(
 )(ProfileAPI)
 
 
-function GetUrl(userId, props) {
-    const axios = require("axios").default;
-
-    axios
-        .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
-        .then((response) => {
-            props.changeFetchingStatus(false);
-            props.addUserData(response.data);
-            console.log(props.userData);
-            // this.props.setUsersCount(response.data.totalCount)
-        });
-}

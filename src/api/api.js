@@ -49,6 +49,11 @@ export const profileAPI = {
         return instance.post(`auth/login`, {userData}).then(response => {
             return response.data
         })
+    },
+    getUserData(userId) {
+        return instance.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId).then((response) => {
+            return response.data
+        });
     }
 }
 

@@ -8,8 +8,6 @@ import {profileAPI} from "../../../api/api";
 
 const Profile__info = (props) => {
 
-
-
     const [isEdit, setEdit] = useState(false)
     const [status, setStatus] = useState(props.status)
     console.log(props.status)
@@ -35,7 +33,7 @@ const Profile__info = (props) => {
                         }}/>
                         <CheckIcon display='inline-block' onClick={() => {
                             setEdit(false)
-                            profileAPI.updateStatus(status)
+                            props.updateStatus(status)
                         }
                         }/>
                     </div>: <div>
