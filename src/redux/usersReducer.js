@@ -140,6 +140,16 @@ export const getUsersThunkCreator = () => {
         });
     }
 }
+export const changeCurrentPageThunkCreator = (page) => {
+    return (dispatch) => {
+        dispatch(changeFetchingStatus(true))
+        UsersApi.changeCurrentPage(page).then(data => {
+            dispatch(changeCurrentPageAction(page))
+            dispatch(changeFetchingStatus(false))
+            dispatch(getUsersAction(data.items))
+        })
+    }
+}
 
 export default usersReducer;
 

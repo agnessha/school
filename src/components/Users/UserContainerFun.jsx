@@ -12,23 +12,17 @@ import Users from "./UsersC";
 import {UsersApi} from "../../api/api";
 
 
-const UserAPI = (props) => {
-    props.getUsersThunkCreator()
+const UserListComponent = (props) => {
     useEffect(() => {
         props.getUsersThunkCreator()
     }, []);
 
     let changeCurrentPage = (event) => {
-        console.log(event);
+        console.log('lololo');
         let page = parseInt(event.currentTarget.dataset.value)
-        props.changePageAction(page)
-        props.changeFetchingStatus(true)
-
-        // UsersApi.changeCurrentPage(event.currentTarget.dataset.value).then(data => {
-        //     props.changeFetchingStatus(false)
-        //     props.getUsersAction(data.items)
-        // })
-       props.changeCurrentPageThunkCreator(event.currentTarget.dataset.value)
+        // props.changePageAction(page)
+        // props.changeFetchingStatus(true)
+        props.changeCurrentPageThunkCreator(page)
     }
     return (
         <div>
@@ -100,11 +94,13 @@ let mapDispatchToProps = (dispatch) => {
 
             dispatch(changeFollowingStatus(status, id))
         },
-        getUsersThunkCreator,
-        // changeCurrentPageThunkCreator
+        getUsersThunkCreator: () => {dispatch(getUsersThunkCreator())},
+        changeCurrentPageThunkCreator: (page) => {
+            dispatch(changeCurrentPageThunkCreator(page))
+        }
     }
 }
 
-const UserContainerFun = connect(mapStateToProps, mapDispatchToProps)(UserAPI)
+const UserContainerFun = connect(mapStateToProps, mapDispatchToProps)(UserListComponent)
 
 export default UserContainerFun
