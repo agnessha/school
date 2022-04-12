@@ -1,10 +1,4 @@
 import React from 'react';
-import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
-import Message__item from "./Message/Message";
-import Dialog__item from "./Dialog/Dialog";
-import Button from 'react-bootstrap/Button';
-import {Col} from "react-bootstrap";
 import {addMessageAction, addMessageValueAction} from "../../redux/dialogReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";

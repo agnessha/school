@@ -45,8 +45,8 @@ export const profileAPI = {
             return response.data
         })
     },
-    login(userData) {
-        return instance.post(`auth/login`, {userData}).then(response => {
+    login(email, password, rememberMe) {
+        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => {
             return response.data
         })
     },

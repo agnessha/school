@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Message.module.css'
-import {NavLink} from "react-router-dom";
 
 
 const Message__item = (props) => {

@@ -1,3 +1,4 @@
+import {UsersApi} from "../api/api";
 
 let defaultState = {
     userDataH: null
@@ -37,6 +38,16 @@ export const exitFromUserProfile = () => {
     return ({
         type: 'EXIT'
     })
+}
+
+export const getUserDataThunkCreator = () => {
+    return (dispatch) => {
+        UsersApi.auth().then((data) => {
+           dispatch(getUserDataAC(data.id,
+                data.login,
+                data.email))
+        });
+    }
 }
 
 export default authReducer;
