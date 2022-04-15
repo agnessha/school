@@ -19,6 +19,7 @@ import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 const ProfileAPI = (props) => {
+    console.log(props)
     const navigate = useNavigate()
     let { userId } = useParams();
 
@@ -30,7 +31,6 @@ const ProfileAPI = (props) => {
         props.updateUserStatusThunkCreator(status)
     }
 
-    console.log(props.status)
         return (
             <div className={s.content}>
                 <div className={s.profile_infoImg}>

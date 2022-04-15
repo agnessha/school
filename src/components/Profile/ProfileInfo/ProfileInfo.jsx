@@ -10,8 +10,7 @@ const Profile__info = (props) => {
 
     const [isEdit, setEdit] = useState(false)
     const [status, setStatus] = useState(props.status)
-    console.log(props.status)
-    console.log(status)
+
     useEffect(() => {
         setStatus(props.status)
     })
@@ -24,6 +23,9 @@ const Profile__info = (props) => {
                         "https://klike.net/uploads/posts/2020-04/1587719791_1.jpg"} alt=""/>
             </div>
             <div className={s.description}>
+                <div>
+                    {props.userData !== null ? props.userData.fullName : ''}
+                </div>
                 <div className={s.profile_status}>
                     {isEdit ?
                         <div>

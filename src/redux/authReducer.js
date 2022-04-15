@@ -1,20 +1,19 @@
-import {UsersApi} from "../api/api";
+import {profileAPI, UsersApi} from "../api/api";
 
 let defaultState = {
-    userDataH: null
+    userDataH: null,
 }
 
 const authReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'GET_USER_DATA':
-
             return {
                 ...state,
                 userDataH: {
                     userId: action.userId,
                     userLogin: action.userLogin,
                     userEmail: action.userEmail
-                }
+                },
             }
         case 'EXIT':
             return {
@@ -44,6 +43,20 @@ export const getUserDataThunkCreator = () => {
     return (dispatch) => {
         UsersApi.auth().then((data) => {
            dispatch(getUserDataAC(data.id,
+                data.login,
+                data.email))
+        });
+    }
+}
+
+export const loginThunkCreator = ( email, password, rememberMe) => {
+    return (dispatch) => {
+        profileAPI.login(email, password, rememberMe).then((response) => {
+            console.log(response)
+        })
+        UsersApi.auth().then((data) => {
+
+            dispatch(getUserDataAC(data.id,
                 data.login,
                 data.email))
         });

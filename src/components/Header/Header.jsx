@@ -3,14 +3,13 @@ import s from './Header.module.css';
 import imageLogo from '../../img/logo4.png';
 import { ChakraProvider } from '@chakra-ui/react'
 import {useNavigate, NavLink} from "react-router-dom";
+import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 
 const Header = (props) => {
     if (props.userDataH !== null) {
-        console.log('not null')
         return (
-
         <header className={s.header}>
             <img src={imageLogo} alt=""/>
             <div className={s.userData}>
@@ -19,8 +18,6 @@ const Header = (props) => {
         </header>
     )
     } else {
-        console.log('null')
-
         return (
             <header className={s.header}>
                 <img src={imageLogo} alt=""/>
@@ -32,7 +29,7 @@ const Header = (props) => {
             </header>
         )
     }
-
 }
 
-export default Header;
+
+export default userAuthHoc(Header);

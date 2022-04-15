@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import { Box, Text, Flex, Image } from '@chakra-ui/react'
 import {UsersApi} from "../../api/api";
 import {addUserDataAC} from "../../redux/profileReducer";
-import {getUserDataAC} from "../../redux/authReducer";
+import {getUserDataAC, getUserDataThunkCreator} from "../../redux/authReducer";
 
 
 
@@ -19,12 +19,8 @@ import {getUserDataAC} from "../../redux/authReducer";
 const Navbar = (props) => {
 
     useEffect(() => {
-        UsersApi.auth().then((data) => {
-            console.log(data)
-            props.getUserData(data.data.id,
-                data.data.login,
-                data.data.email)
-        })
+
+        props.getUserDataThunkCreator()
     }, [])
     const navigate = useNavigate();
 
@@ -111,7 +107,8 @@ let mapDispatchToProps = (dispatch) => {
 
         getUserData: (id, login, email) => {
             dispatch(getUserDataAC(id, login, email))
-        }
+        },
+        getUserDataThunkCreator: () => {dispatch(getUserDataThunkCreator())}
     }
 }
 

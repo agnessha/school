@@ -30,7 +30,7 @@ export const UsersApi = {
         })
     },
     auth() {
-        return instance.get(`auth/me`).then(response => response.data)
+        return instance.get(`auth/me`).then(response => response.data.data)
     }
 }
 
@@ -47,6 +47,11 @@ export const profileAPI = {
     },
     login(email, password, rememberMe) {
         return instance.post(`auth/login`, {email, password, rememberMe}).then(response => {
+            return response.data
+        })
+    },
+    logout() {
+        return instance.delete(`auth/login`).then(response => {
             return response.data
         })
     },
