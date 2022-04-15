@@ -10,7 +10,7 @@ const Profile__info = (props) => {
 
     const [isEdit, setEdit] = useState(false)
     const [status, setStatus] = useState(props.status)
-
+    console.log(props)
     useEffect(() => {
         setStatus(props.status)
     })
@@ -24,7 +24,7 @@ const Profile__info = (props) => {
             </div>
             <div className={s.description}>
                 <div>
-                    {props.userData !== null ? props.userData.fullName : ''}
+                    {props.userDataH !== null ? props.userDataH.fullName : ''}
                 </div>
                 <div className={s.profile_status}>
                     {isEdit ?

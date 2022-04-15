@@ -8,12 +8,20 @@ import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 const Header = (props) => {
+
+    let spacing = '10'
+    console.log(props.userDataH)
     if (props.userDataH !== null) {
         return (
         <header className={s.header}>
             <img src={imageLogo} alt=""/>
             <div className={s.userData}>
-                {props.userDataH.userLogin === undefined ? <NavLink to='/login'>Log in</NavLink> : props.userDataH.userLogin }
+                {props.userDataH !== null ? props.userDataH.fullName : ''}
+                <span className={s.logout} onClick={() => {
+                    props.logoutThunkCreator()
+                }}>
+                    Log out
+                </span>
             </div>
         </header>
     )

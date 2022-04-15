@@ -22,5 +22,9 @@ header img {
   display: inline-block;
   color: white;
 }
+.logout{
+  padding-left: 15px;
+  cursor: pointer
+}
 
 /*# sourceMappingURL=Header.module.css.map */
