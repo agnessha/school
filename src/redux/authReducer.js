@@ -1,12 +1,19 @@
 import {profileAPI, UsersApi} from "../api/api";
 
+
 let defaultState = {
     userDataH: null,
-    userStatus: null
+    userStatus: null,
+    loginError: false
 }
 
 const authReducer = (state = defaultState, action) => {
     switch (action.type) {
+        case 'SET_LOGIN_ERROR':
+            return  {
+                ...state,
+                loginError: true
+            }
         case 'SET_USER_DATA':
             return {
                 ...state,
@@ -36,7 +43,13 @@ const authReducer = (state = defaultState, action) => {
 
 }
 
-export const setUserData = (data) => {
+const setLoginError = () => {
+    return ({
+        type: 'SET_LOGIN_ERROR'
+    })
+}
+
+const setUserData = (data) => {
     return ({
         type: 'SET_USER_DATA',
         data: data
@@ -83,9 +96,13 @@ export const loginThunkCreator = ( email, password, rememberMe) => {
     return (dispatch) => {
         profileAPI.login(email, password, rememberMe).then((response) => {
             console.log(response)
-            profileAPI.getUserData(response.data.userId).then((response) => {
-                dispatch(setUserData(response))
-            })
+            if (response.resultCode !== 0) {
+                dispatch(setLoginError())
+            } else {
+                profileAPI.getUserData(response.data.userId).then((response) => {
+                    dispatch(setUserData(response))
+                })
+            }
         })
 
     }

@@ -19,7 +19,6 @@ import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 const ProfileAPI = (props) => {
-    console.log(props)
     const navigate = useNavigate()
     let { userId } = useParams();
 

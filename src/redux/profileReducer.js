@@ -74,7 +74,6 @@ export const getUserDataThunkCreator = (userId) => {
     return (dispatch) => {
         profileAPI.getUserData(userId).then((data) => {
             dispatch(addUserDataAC(data));
-            debugger
             console.log(data)
                 profileAPI.getStatus(userId).then((data) => {
                     dispatch(getStatus(data));

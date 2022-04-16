@@ -10,7 +10,6 @@ const Profile__info = (props) => {
 
     const [isEdit, setEdit] = useState(false)
     const [status, setStatus] = useState(props.status)
-    console.log(props)
     useEffect(() => {
         setStatus(props.status)
     })
