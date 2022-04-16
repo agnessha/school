@@ -24,7 +24,7 @@ const Profile__info = (props) => {
             </div>
             <div className={s.description}>
                 <div>
-                    {props.userDataH !== null ? props.userDataH.fullName : ''}
+                    {props.userData !== null ? props.userData.fullName : ''}
                 </div>
                 <div className={s.profile_status}>
                     {isEdit ?

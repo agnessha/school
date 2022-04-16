@@ -8,6 +8,7 @@ import {userAuthHoc} from "../../hocs/userAuthHoc";
 
 
 const Header = (props) => {
+    const navigate = useNavigate();
 
     let spacing = '10'
     console.log(props.userDataH)
@@ -19,6 +20,7 @@ const Header = (props) => {
                 {props.userDataH !== null ? props.userDataH.fullName : ''}
                 <span className={s.logout} onClick={() => {
                     props.logoutThunkCreator()
+                    navigate('/login')
                 }}>
                     Log out
                 </span>

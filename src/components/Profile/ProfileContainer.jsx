@@ -24,7 +24,7 @@ const ProfileAPI = (props) => {
     let { userId } = useParams();
 
     useEffect(() => {
-        props.getUserDataThunkCreator()
+        props.getUserDataThunkCreator(userId)
     }, [userId]);
 
     let updateStatus = (status) => {

@@ -2,6 +2,7 @@ import {profileAPI, UsersApi} from "../api/api";
 
 let defaultState = {
     userDataH: null,
+    userStatus: null
 }
 
 const authReducer = (state = defaultState, action) => {
@@ -10,6 +11,11 @@ const authReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 userDataH: action.data
+            }
+        case 'SET_USER_STATUS':
+            return {
+                ...state,
+                userStatus: action.status
             }
         case 'GET_USER_DATA':
             return {
@@ -36,6 +42,12 @@ export const setUserData = (data) => {
         data: data
     })
 }
+const setStatus = (status) => {
+    return ({
+        type: 'SET_USER_STATUS',
+        status: status
+    })
+}
 export const getUserDataAC = (id, login, email) => {
     return ({
         type: 'GET_USER_DATA',
@@ -59,6 +71,9 @@ export const getUserDataThunkCreator = () => {
                 profileAPI.getUserData(data.id).then((response) => {
                     dispatch(setUserData(response))
                 })
+                profileAPI.getStatus(data.id).then((data) => {
+                    dispatch(setStatus(data));
+                })
             }
         });
     }
@@ -72,18 +87,15 @@ export const loginThunkCreator = ( email, password, rememberMe) => {
                 dispatch(setUserData(response))
             })
         })
-        // UsersApi.auth().then((data) => {
-        //     dispatch(getUserDataAC(data.id,
-        //         data.login,
-        //         data.email))
-        // });
+
     }
 }
+
+
 
 export const logoutThunkCreator = () => {
     return (dispatch) => {
         profileAPI.logout().then((response) => {
-            console.log(response)
             if (response.resultCode === 0) {
                 dispatch(exitFromUserProfile())
             } else {
