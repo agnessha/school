@@ -4,8 +4,8 @@ import profileImg from "../../img/Landscape-Color.jpg";
 import Profile__info from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { connect } from "react-redux";
-import {addUserDataAC, getStatus, getUserDataThunkCreator,
-    updateUserStatusThunkCreator} from "../../redux/profileReducer";
+import {addUserDataAC, setNewStatus, getUserDataThunkCreator,
+    updateUserStatusThunkCreator, setNewStatusThunkCreator} from "../../redux/profileReducer";
 import { changeFetchingStatus } from "../../redux/usersReducer";
 import {Navigate, useParams} from "react-router-dom";
 import { useEffect } from "react";
@@ -15,6 +15,11 @@ import {useNavigate, NavLink} from "react-router-dom";
 import {compose} from "redux";
 import store from "../../redux/redux-store";
 import {userAuthHoc} from "../../hocs/userAuthHoc";
+import {
+    getStatusSuperSelector,
+    getUserDataSuperSelector,
+    getUserPhotoSuperSelector
+} from "../../redux/reselectors/profile-page-reselector";
 
 
 
@@ -29,6 +34,9 @@ const ProfileAPI = (props) => {
     let updateStatus = (status) => {
         props.updateUserStatusThunkCreator(status)
     }
+    let setNewStatusDuringEditing = (status) => {
+        props.setNewStatusThunkCreator(status)
+    }
 
         return (
             <div className={s.content}>
@@ -38,9 +46,8 @@ const ProfileAPI = (props) => {
                 <div>
                     <Profile__info
                         updateStatus={updateStatus}
-                        getStatus={props.getStatus}
+                        setNewStatusDuringEditing={setNewStatusDuringEditing}
                         status={props.status}
-                        userDataH={props.userDataH}
                         userData={props.userData}
                         photo={props.photo} />
                     <MyPostsContainer />
@@ -52,29 +59,17 @@ const ProfileAPI = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        status: state.profilePage.status,
-        userDataH: state.auth.userDataH,
-        userData: state.profilePage.userData,
-        photo:
-            state.profilePage.userData !== null
-                ? state.profilePage.userData.photos.small
-                : null,
+        status: getStatusSuperSelector(state),
+        userData: getUserDataSuperSelector(state),
+        photo: getUserPhotoSuperSelector(state)
     };
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        addUserData: (userData) => {
-            dispatch(addUserDataAC(userData));
+        setNewStatus: (status) => {
+            dispatch(setNewStatus(status))
         },
-        changeFetchingStatus: (status) => {
-            dispatch(changeFetchingStatus(status));
-        },
-        getUserData: (id, login, email) => {
-            dispatch(getUserDataAC(id, login, email))
-        },
-        getStatus: (status) => {
-            dispatch(getStatus(status))
-        },
+        setNewStatusThunkCreator: (status) => {dispatch(setNewStatusThunkCreator(status))},
         getUserDataThunkCreator: (userId) => {dispatch(getUserDataThunkCreator(userId))},
         updateUserStatusThunkCreator: (status) => {dispatch(updateUserStatusThunkCreator(status))}
     };

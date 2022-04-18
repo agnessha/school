@@ -63,10 +63,16 @@ export const addUserDataAC = (userData) => {
         userData: userData,
     };
 };
-export const getStatus = (status) => {
+export const setNewStatus = (status) => {
     return {
         type: 'GET_STATUS',
         status: status
+    }
+}
+
+export const setNewStatusThunkCreator = (status) => {
+    return (dispatch) => {
+        dispatch(setNewStatus(status))
     }
 }
 
@@ -76,7 +82,7 @@ export const getUserDataThunkCreator = (userId) => {
             dispatch(addUserDataAC(data));
             console.log(data)
                 profileAPI.getStatus(userId).then((data) => {
-                    dispatch(getStatus(data));
+                    dispatch(setNewStatus(data));
                 })
 
         })

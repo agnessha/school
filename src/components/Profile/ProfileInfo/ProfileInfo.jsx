@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import {EditIcon, CheckIcon} from "@chakra-ui/icons";
 import { Input } from '@chakra-ui/react'
 import {profileAPI} from "../../../api/api";
+import {setNewStatus} from "../../../redux/profileReducer";
 
 
 
@@ -30,7 +31,7 @@ const Profile__info = (props) => {
                         <div>
                         <Input width='auto' value={status} onChange={(event) => {
                         setStatus(event.target.value)
-                            props.getStatus(event.target.value)
+                            props.setNewStatusDuringEditing(event.target.value)
                         }}/>
                         <CheckIcon display='inline-block' onClick={() => {
                             setEdit(false)
