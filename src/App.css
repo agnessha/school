@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 @font-face {
   font-family: "MyFont";
   src: local("MyFont"), url(./fonts/Rosario-Regular.woff) format("woff");
@@ -7,7 +9,9 @@
   src: local("MainFont"), url(./fonts/MavenPro-Regular.woff) format("woff");
 }
 body {
-  background-color: #e3e3e3 !important;
+  background-color: #C2F3D3 !important;
+  color: black;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .app-wrapper {
@@ -27,6 +31,10 @@ body {
 .errorText {
   color: red;
   line-height: 40px;
+}
+
+.dark {
+  filter: opacity(50%);
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -30,7 +30,7 @@ const Navbar = (props) => {
     console.log(props.userDataH)
     return (
         <div>
-            <Box margin='77px 0 '>
+            <Box margin='77px 0 ' className={s.navbarBox}>
                 <Box>
                         <NavLink to={props.userDataH === null || props.userDataH.userId === undefined ? '/login' : href + props.userDataH.userId}>
                         <Flex>

@@ -10,6 +10,7 @@ import {
     unfollowThunkCreator
 } from "../../redux/usersReducer";
 import Users from "./UsersC";
+import {getUsersSelector} from "../../redux/reselectors/users-page-reselect";
 
 
 const UserListComponent = (props) => {
@@ -24,6 +25,7 @@ const UserListComponent = (props) => {
 
     return (
         <div>
+
             <Users
                 pageSize={props.pageSize}
                 usersTotalCount={props.usersTotalCount}
@@ -39,13 +41,14 @@ const UserListComponent = (props) => {
                 unfollowThunkCreator={props.unfollowThunkCreator}
 
             />
+
         </div>
     )
 }
 
 let mapStateToProps = (state) => {
     return{
-        users: state.usersPage.users,
+        users: getUsersSelector(state),
         usersTotalCount: state.usersPage.usersTotalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,

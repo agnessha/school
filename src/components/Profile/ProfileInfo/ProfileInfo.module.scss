@@ -3,6 +3,7 @@
   width: 200px;
   margin: 20px;
   display: inline-block;
+  border: 2px solid #8446C5;
   & img{
     width: 200px;
   }
@@ -15,14 +16,21 @@
   vertical-align: top;
   margin: 20px;
 }
-
-.profile_info{
-  font-family: 'MyFont', sans-serif;
-  font-size: 20px;
-  margin-top: 20px;
-  color: #3d3d3d;
-  vertical-align: top;
-  background-color: #f0f0f0;
-  border-radius: 30px;
+.descriptionName{
+  font-size: 25px
 }
 
+.profile_info {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 20px;
+  margin-top: 20px;
+  color: black;
+  vertical-align: top;
+  background-color: #8446C5;
+  border-radius: 30px;
+  border-color: #8446C5;
+}
+
+.status{
+  display: inline-block;
+}

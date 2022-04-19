@@ -40,9 +40,9 @@ const ProfileAPI = (props) => {
 
         return (
             <div className={s.content}>
-                <div className={s.profile_infoImg}>
-                    <img src={profileImg} alt="" />
-                </div>
+                {/*<div className={s.profile_infoImg}>*/}
+                {/*    <img src={profileImg} alt="" />*/}
+                {/*</div>*/}
                 <div>
                     <Profile__info
                         updateStatus={updateStatus}

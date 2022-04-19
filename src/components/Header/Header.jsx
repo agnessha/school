@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Header.module.css';
 import imageLogo from '../../img/logo4.png';
-import { ChakraProvider } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import {useNavigate, NavLink} from "react-router-dom";
 import {userAuthHoc} from "../../hocs/userAuthHoc";
 
@@ -15,7 +15,10 @@ const Header = (props) => {
     if (props.userDataH !== null) {
         return (
         <header className={s.header}>
-            <img src={imageLogo} alt=""/>
+            {/*<img src={imageLogo} alt=""/>*/}
+            <Box fontSize='30px'  padding='10px' display='inline-block'>
+                inTouch
+            </Box>
             <div className={s.userData}>
                 {props.userDataH !== null ? props.userDataH.fullName : ''}
                 <span className={s.logout} onClick={() => {

@@ -21,7 +21,7 @@ import {LoginContainer} from "./components/Login/Login";
 
 const App = (props) => {
     return (
-        <div>
+        <div className={props.store.getState().usersPage.isFetching ? 'dark' : ''}>
         <HeaderContainer store={props.store}/>
             <div className='app-wrapper'>
 

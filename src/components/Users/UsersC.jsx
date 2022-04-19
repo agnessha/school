@@ -3,6 +3,8 @@ import s from './Users.module.css';
 import avatarImg from '../../img/avatar.svg';
 import preloader from '../../img/preloader.svg'
 import {NavLink} from "react-router-dom";
+import FillingBottle from "react-cssfx-loading/lib/BarWave";
+
 
 const Users = (props) => {
     console.log(props.isFollowing)
@@ -16,8 +18,9 @@ const Users = (props) => {
     console.log(props.isFetching)
     return (
         <div className={s.users}>
+
             {
-                props.isFetching ? <img src={preloader}/> : ''
+                props.isFetching ? <FillingBottle className={s.preloder} color="#FF0000" /> : ''
             }
             <div className={s.usersButtons}>
                 {pages.map(p => {
