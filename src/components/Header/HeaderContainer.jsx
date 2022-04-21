@@ -7,7 +7,6 @@ import {UsersApi} from "../../api/api";
 
 
 const HeaderAPI = (props) => {
-    console.log(props)
     let { userId } = useParams()
     useEffect(() => {
         props.getUserDataThunkCreator();

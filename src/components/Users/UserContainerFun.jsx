@@ -11,6 +11,8 @@ import {
 } from "../../redux/usersReducer";
 import Users from "./UsersC";
 import {getUsersSelector} from "../../redux/reselectors/users-page-reselect";
+import '../../App.css';
+
 
 
 const UserListComponent = (props) => {
@@ -24,7 +26,6 @@ const UserListComponent = (props) => {
     }
 
     return (
-        <div>
 
             <Users
                 pageSize={props.pageSize}
@@ -42,7 +43,6 @@ const UserListComponent = (props) => {
 
             />
 
-        </div>
     )
 }
 

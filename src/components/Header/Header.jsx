@@ -11,7 +11,6 @@ const Header = (props) => {
     const navigate = useNavigate();
 
     let spacing = '10'
-    console.log(props.userDataH)
     if (props.userDataH !== null) {
         return (
         <header className={s.header}>

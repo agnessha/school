@@ -7,7 +7,6 @@ import FillingBottle from "react-cssfx-loading/lib/BarWave";
 
 
 const Users = (props) => {
-    console.log(props.isFollowing)
 
     let pagesCount = Math.ceil(props.usersTotalCount / props.pageSize)
     let pages = []
@@ -20,7 +19,10 @@ const Users = (props) => {
         <div className={s.users}>
 
             {
-                props.isFetching ? <FillingBottle className={s.preloder} color="#FF0000" /> : ''
+                props.isFetching ? <div className={s.preloderParent}>
+                    <FillingBottle className={s.preloder} color="#FF0000" />
+                </div> : ''
+
             }
             <div className={s.usersButtons}>
                 {pages.map(p => {

@@ -27,7 +27,6 @@ const Navbar = (props) => {
 
     let hrefToLogin = '/login'
     let href = '/profile/'
-    console.log(props.userDataH)
     return (
         <div>
             <Box margin='77px 0 ' className={s.navbarBox}>

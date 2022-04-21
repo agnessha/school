@@ -21,12 +21,12 @@ import {LoginContainer} from "./components/Login/Login";
 
 const App = (props) => {
     return (
-        <div className={props.store.getState().usersPage.isFetching ? 'dark' : ''}>
+        <div>
         <HeaderContainer store={props.store}/>
             <div className='app-wrapper'>
 
                 <NavbarCon friendsData={props.friendsData}/>
-                <div className='app-wrapper-content'>
+                <div className={props.profilePage.isFetching ? 'dark' : ''}>
                     <Routes>
                         <Route path='/login' element={<LoginContainer />} />
                         <Route path='/profile/:userId' element={<ProfileContainer store={props.store}/>}/>

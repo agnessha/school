@@ -1,8 +1,8 @@
 .myPosts {
   padding: 30px;
-  background-color: #f0f0f0;
-  border-radius: 30px;
   margin-top: 25px;
+  border: 2px solid #DDE01D;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .newPosts_input input {
@@ -20,16 +20,16 @@
 .newPost_btn {
   height: 37px;
   width: 95px;
-  background-color: #267de0;
   text-align: center;
-  margin: 20px auto 20px 5px;
-  border-radius: 6px;
-  border: 1px #267de0 solid;
+  margin: 10px auto 20px 0;
+  background-color: #E81EFF;
+  border: 1px #E81EFF solid;
+  display: inline-block;
 }
 .newPost_btn:hover {
-  background-color: #3f4fe0;
+  background-color: #8446C5;
   cursor: pointer;
-  border: 5px solid #3f4fe0;
+  border: 5px solid #8446C5;
 }
 
 /*# sourceMappingURL=MyPosts.module.css.map */

@@ -88,15 +88,23 @@
 .usersButtons{
   width: 30%;
 }
-.preloder{
+.preloderParent{
   position: fixed;
-  left: 50%;
-  top: 20%;
-  right: 50%;
-  bottom: 45%;
-  overflow: hidden;
-  z-index: 999;
-  //filter: opacity(1%);
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(31%, 31%, 31%, 0.5);
+  z-index: 99999;
+  display: block;
+
+}
+.preloder{
+  position: relative;
+  margin: 20% auto;
+
+
 }
 
 /*# sourceMappingURL=Users.module.css.map */
